@@ -1,5 +1,5 @@
 const router = require("express").Router({ mergeParams: true });
-const controller = require("./reservations.controller");
+const controller = require("./users.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
 
 /* GET users listing. */
