@@ -5,11 +5,11 @@ require('dotenv').config({ path: path.join(__dirname, '.env') })
 const express = require('express')
 const cors = require('cors')
 
-const errorHandler = require('./src/errors/errorHandler')
-const notFound = require('./src/errors/notFound')
+const errorHandler = require('./errors/errorHandler')
+const notFound = require('./errors/notFound')
 
 var indexRouter = require('./src/routes/index')
-var usersRouter = require('./src/users/users.router')
+var usersRouter = require('./users/users.router')
 
 var app = express()
 
