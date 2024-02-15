@@ -31,6 +31,7 @@ function AdminHome() {
             </div>
             <div>
                 <h2>Your Employees</h2>
+                <button>Menu</button> {/* Need more information on the contents of this menu but for now it's here */}
                 <Link to="">Register A New Employee</Link>
                 <div>
                     <EmployeesList employees={employees}/>
