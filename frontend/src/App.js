@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import LandingPage from "./LandingPage/LandingPage.js"
-import AdminHome from "./AdminHome/AdminHome.js";
+import LandingPage from "./landingPage/LandingPage.jsx"
+import AdminHome from "./AdminHome/AdminHome.jsx";
 
 function App() {
   return (
