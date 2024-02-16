@@ -11,7 +11,7 @@ const goals = {
     revenueGoal: 220000
 }
 
-function AdminHome() {
+export default function AdminHome() {
 
     return (
         <>
@@ -40,5 +40,3 @@ function AdminHome() {
         </>
     )
 }
-
-export default AdminHome
