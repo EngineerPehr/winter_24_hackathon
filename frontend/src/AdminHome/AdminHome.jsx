@@ -9,7 +9,8 @@ const goals = {
     sleepHoursThisMonth: 1545,
     sleepHoursGoal: 2800,
     revenueThisMonth: 150085,
-    revenueGoal: 220000
+    revenueGoal: 220000,
+    companyMood: "Decent"
 }
 
 export default function AdminHome() {
@@ -18,6 +19,8 @@ export default function AdminHome() {
         <>
             <div>
                 <img src={graph} style={{ width: "100px"}} alt="company mood graph"></img>
+                <h2>Company Mood</h2>
+                <h3>{goals.companyMood}</h3>
             </div>
             <div>
                 <h2>Employee Sleep Quality Goals</h2>
