@@ -34,8 +34,17 @@ export default function AdminHome() {
             </div>
             <div>
                 <h2>Your Employees</h2>
-                <button>Menu</button> {/* Need more information on the contents of this menu but for now it's here */}
-                <Link to="">Register A New Employee</Link>
+                <select name="options" id="admin-options">
+                    <option value="">Menu</option>
+                    <option value="profile">Profile</option>
+                    <option value="report_history">Report History</option>
+                    <option value="employees_list">Full List of Employees</option>
+                    <option value="settings">Settings</option>
+                    <option value="help_desk">IT Help Desk</option>
+                </select>
+                <div>
+                    <Link to="">Register A New Employee</Link>
+                </div>
                 <div>
                     <EmployeesList employees={employees}/>
                 </div>
