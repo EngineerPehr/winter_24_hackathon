@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import LandingPage from "./landingPage/LandingPage.jsx"
+import LandingPage from "./LandingPage/LandingPage.jsx"
 import AdminHome from "./AdminHome/AdminHome.jsx";
 
 function App() {
