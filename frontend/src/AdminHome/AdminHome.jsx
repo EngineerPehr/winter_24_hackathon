@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { employees } from "../utils/api";
-import EmployeesList from "./EmployeesList";
+import EmployeesList from "./EmployeesList"
+import graph from "./graph.jpg"
 
 // Placeholder admin goals data:
 const goals = {
@@ -16,6 +17,9 @@ export default function AdminHome() {
     return (
         <>
             <div>
+                <img src={graph} style={{ width: "100px"}} alt="company mood graph"></img>
+            </div>
+            <div>
                 <h2>Employee Sleep Quality Goals</h2>
                 <p>Total {goals.sleepHoursThisMonth.toLocaleString()} out of {goals.sleepHoursGoal.toLocaleString()} hours of sleep.</p>
                 <p>Check out ways to improve your company numbers</p>
@@ -24,10 +28,6 @@ export default function AdminHome() {
             <div>
                 <h2>Monthly Client Tasks Met</h2>
                 <p>Successfully completed 80 of 128 targeted tasks.</p>
-            </div>
-            <div>
-                <h2>Monthly Revenue Goals</h2>
-                <p>${goals.revenueThisMonth.toLocaleString()} out of ${goals.revenueGoal.toLocaleString()} revenue goal met.</p>
             </div>
             <div>
                 <h2>Your Employees</h2>
