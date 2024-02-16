@@ -53,7 +53,7 @@ async function update(req, res) {
     try {
         const { person_id } = res.locals.healthData
         const updatedHealthData = { ...req.body.data, person_id }
-        console.log('Updated Health Data:', updatedHealthData)
+        // console.log('Updated Health Data:', updatedHealthData)
         const result = await service.update(updatedHealthData)
         res.json({ data: result[0] })
     } catch (error) {
