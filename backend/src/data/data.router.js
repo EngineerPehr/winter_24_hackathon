@@ -8,4 +8,10 @@ router
     .post(controller.create)
     .all(methodNotAllowed)
 
+router
+    .route('/:personId')
+    .get(controller.read)
+    .delete(controller.deleteHealthData)
+    .all(methodNotAllowed)
+
 module.exports = router

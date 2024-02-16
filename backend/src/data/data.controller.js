@@ -39,8 +39,18 @@ function read (req, res, next) {
     res.json({ data })
 }
 
+async function deleteHealthData (req, res, next) {
+    const { personId } = req.params
+    await service.deleteHealthData(personId)
+    res.sendStatus(204)
+}
+
 module.exports = {
     list: asyncErrorBoundary(list),
     create: asyncErrorBoundary(create),
     read: [asyncErrorBoundary(healthDataExists), read],
+    deleteHealthData: [
+        asyncErrorBoundary(healthDataExists),
+        asyncErrorBoundary(deleteHealthData),
+    ],
 }
