@@ -11,6 +11,7 @@ router
 router
     .route('/:personId')
     .get(controller.read)
+    .put(controller.update)
     .delete(controller.deleteHealthData)
     .all(methodNotAllowed)
 

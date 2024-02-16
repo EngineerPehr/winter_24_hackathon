@@ -12,10 +12,13 @@ function create(newHealthData) {
 }
 
 function read(personId) {
+    return knex('health_data').where({ person_id: personId }).first()
+}
+
+function update(updatedHealthData) {
     return knex('health_data')
-        .select('*')
-        .where({ person_id: personId })
-        .first()
+        .where({ person_id: updatedHealthData.person_id })
+        .update(updatedHealthData, '*')
 }
 
 function deleteHealthData(personId) {
@@ -26,5 +29,6 @@ module.exports = {
     list,
     create,
     read,
+    update,
     deleteHealthData,
 }
