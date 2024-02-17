@@ -10,14 +10,24 @@ export default function ProgressBar({ completed, progress }) {
         width: `${progress}%`,
     }
 
-  return (
-    <>
-    <div className="my-3">
-        <div className="bg-black h-2.5 rounded-full" style={ progressBarStyle }></div>
-    </div>
-    <div className="">
-        <div className="bg-black h-2.5 rounded-full" style={ completedBarStyle }></div>
-    </div>
-    </>
-  )
+    if (!completed) {
+        return (
+        <>
+        <div className="my-3">
+            <div className="bg-black h-2.5 rounded-full" style={ progressBarStyle }></div>
+        </div>
+        </>
+        )
+    } else {
+        return (
+            <>
+            <div className="my-3">
+                <div className="bg-black h-2.5 rounded-full" style={ progressBarStyle }></div>
+            </div>
+            <div className="">
+                <div className="bg-black h-2.5 rounded-full" style={ completedBarStyle }></div>
+            </div>
+            </>
+        )
+    }
 }
