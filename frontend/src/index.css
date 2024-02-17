@@ -56,11 +56,12 @@
     focus:outline-none
     focus:ring-4
     focus:ring-gray-300
-    font-medium
+    font-bold
     rounded-xl
-    text-xl
-    px-5
-    py-2
+    text-3xl
+    pt-1.5
+    pb-2
+    py-1
     me-2
     mb-2
 
