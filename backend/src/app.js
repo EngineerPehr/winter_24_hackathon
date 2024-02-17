@@ -8,16 +8,14 @@ const cors = require('cors')
 const errorHandler = require('./errors/errorHandler')
 const notFound = require('./errors/notFound')
 
-var indexRouter = require('./src/routes/index')
-var usersRouter = require('./users/users.router')
+var dataRouter = require('./data/data.router')
 
 var app = express()
 
 app.use(cors())
 app.use(express.json())
 
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/data', dataRouter)
 app.use(notFound)
 app.use(errorHandler)
 
