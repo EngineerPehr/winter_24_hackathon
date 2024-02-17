@@ -34,7 +34,7 @@ export default function AdminHome() {
             </div>
             <div>
                 <h2>Your Employees</h2>
-                <select name="options" id="admin-options">
+                <select name="admin-options" id="admin-options">
                     <option value="">Menu</option>
                     <option value="profile">Profile</option>
                     <option value="report_history">Report History</option>
