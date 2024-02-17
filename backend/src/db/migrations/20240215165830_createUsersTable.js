@@ -9,14 +9,8 @@ exports.up = function (knex) {
             .foreign('person_id')
             .references('person_id')
             .inTable('health_data')
-        table.string('name')
         table.string('username')
-        table.string('password')
-        table.integer('department_id').unsigned()
-        table
-            .foreign('department_id')
-            .references('department_id')
-            .inTable('departments')
+        table.string('gender')
         table.boolean('admin')
     })
 }
