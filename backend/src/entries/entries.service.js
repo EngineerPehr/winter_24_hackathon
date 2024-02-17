@@ -22,7 +22,7 @@ function readPerson(personId) {
 }
 
 function readEntry(entryId) {
-    return knex('entries').where({ entry_id: entryId })
+    return knex('entries').where({ entry_id: entryId }).first()
 }
 
 function update(updatedEntryData) {

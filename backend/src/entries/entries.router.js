@@ -8,10 +8,10 @@ router
     .post(controller.create)
     .all(methodNotAllowed)
 
-router.route('/:personId').get(controller.readPerson).all(methodNotAllowed)
+router.route('/user/:personId').get(controller.readPerson).all(methodNotAllowed)
 
 router
-    .route('/:personId/:entryId')
+    .route('/:entryId')
     .get(controller.readEntry)
     .put(controller.update)
     .delete(controller.deleteEntry)

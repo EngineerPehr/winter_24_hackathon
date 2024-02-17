@@ -26,7 +26,7 @@ async function personExists(req, res, next) {
             message: `Person ID '${personId}' does not exist`,
         })
     } else {
-        res.locals.personEntries = data
+        res.locals.userEntries = data
         next()
     }
 }
@@ -56,7 +56,7 @@ async function create(req, res, next) {
 
 function readPerson(req, res, next) {
     try {
-        const data = res.locals.personEntries
+        const data = res.locals.userEntries
         res.json({ data })
     } catch (error) {
         console.error(error)

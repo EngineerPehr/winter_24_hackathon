@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/data', dataRouter)
-app.use('/entries', etnriesRouter)
+app.use('/entries', entriesRouter)
 app.use(notFound)
 app.use(errorHandler)
 
