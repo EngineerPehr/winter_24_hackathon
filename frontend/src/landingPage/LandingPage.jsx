@@ -3,7 +3,6 @@ import LoginButton from './LoginButton';
 
 export default function LandingPage() {
     return (
-        // <h1>Hello World</h1>
         <>
         <div>
         {/* <div className = 'background-image'> */}
@@ -12,9 +11,9 @@ export default function LandingPage() {
                 <h1>Welcome to Workplace Wellness</h1>
                 <div>
                     <h3>ABC</h3>
-                        <p>abcdefghijklmnopqrstuvweyz</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis laborum deleniti provident fugit suscipit explicabo quis quos. Nesciunt, dolorem mollitia?</p>
                     <h3>ABC</h3>
-                        <p>abcdefghijklmnopqrstuvweyz</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque nesciunt obcaecati reprehenderit fuga cupiditate ipsa quia nostrum saepe. Nemo, ipsum.</p>
                 </div>
                 </div>
                 <div>
