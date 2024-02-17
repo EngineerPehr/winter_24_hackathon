@@ -9,9 +9,9 @@ exports.up = function (knex) {
             .foreign('person_id')
             .references('person_id')
             .inTable('health_data')
-        table.string('username')
-        table.string('gender')
-        table.boolean('admin')
+        table.string('username').nullable()
+        table.string('gender').nullable()
+        table.boolean('admin').nullable()
     })
 }
 
