@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
+// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
 
 // Some placeholder data to play around with until we get the backend connected
 export const employees = [
