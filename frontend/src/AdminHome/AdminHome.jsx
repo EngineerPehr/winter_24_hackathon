@@ -30,28 +30,30 @@ export default function AdminHome() {
                 </div>
                 <div className="my-3">
                     <h2 className="text-2xl">Employee Sleep Quality Goals</h2>
-                    <div>
-                    <ProgressBar completed={100} progress={Math.round(sleepHoursProgress)}/>
+                    <div className="my-3">
+                        <ProgressBar completed={100} progress={Math.round(sleepHoursProgress)}/>
                     </div>
                     <p>Total {goals.sleepHoursThisMonth.toLocaleString()} out of {goals.sleepHoursGoal.toLocaleString()} hours of sleep.</p>
                     <p className="mt-1">Check out ways to improve your company numbers</p>
-                    <button className="button-white-rounded mt-1"><Link to="">See Report</Link></button>
+                    <button className="button-white-rounded mt-1 w-5/12 border-4"><Link to="">See Report</Link></button>
                 </div>
                 <div className="my-3">
                     <h2 className="text-2xl">Monthly Client Tasks Met</h2>
-                    <ProgressBar completed={100} progress={Math.round(tasksProgress)}/>
+                    <div className="my-3">
+                        <ProgressBar completed={100} progress={Math.round(tasksProgress)}/>
+                    </div>
                     <p>Successfully completed {goals.tasksMet} of {goals.tasksGoal} targeted tasks.</p>
                 </div>
             </div>
-            <div className="bg-gray-300 m-6 p-3">
-                <div className="flex relative justify-center">
-                <h2 className="text-2xl">Your Employees</h2>
-                <div className="absolute right-5 mt-2">
-                    <DropDownMenuButton options={["Menu", "Profile", "Report History", "Full List of Employees", "IT Help Desk"]} />
+            <div className="bg-gray-300 m-6 pb-3">
+                <div className="flex relative justify-center px-3 py-1">
+                    <h2 className="text-2xl">Your Employees</h2>
+                    <div className="absolute right-5 mt-2">
+                        <DropDownMenuButton options={["Menu", "Profile", "Report History", "Full List of Employees", "IT Help Desk"]} />
+                    </div>
                 </div>
-                </div>
-                <hr />
-                <div>
+                <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
+                <div className="px-3">
                     <button className="button-white-rounded my-7 w-full ml-auto"><Link to="">Register A New Employee</Link></button>
                 </div>
                 <div className="overflow-y-auto h-96">

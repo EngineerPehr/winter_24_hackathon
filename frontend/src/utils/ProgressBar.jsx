@@ -13,7 +13,7 @@ export default function ProgressBar({ completed, progress }) {
     if (!completed) {
         return (
         <>
-        <div className="my-3">
+        <div>
             <div className="bg-black h-2.5 rounded-full" style={ progressBarStyle }></div>
         </div>
         </>
@@ -24,7 +24,7 @@ export default function ProgressBar({ completed, progress }) {
             <div className="my-3">
                 <div className="bg-black h-2.5 rounded-full" style={ progressBarStyle }></div>
             </div>
-            <div className="">
+            <div>
                 <div className="bg-black h-2.5 rounded-full" style={ completedBarStyle }></div>
             </div>
             </>

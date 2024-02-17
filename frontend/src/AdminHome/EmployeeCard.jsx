@@ -14,7 +14,7 @@ export default function EmployeeCard({ employee }) {
     } else {
         return (
             <>
-            <div className="flex relative w-auto p-2 border my-2 border-gray-200 rounded-lg shadow hover:bg-gray-100">
+            <div className="flex relative w-auto p-2 my-2 hover:bg-gray-100">
                 <div className="flex-none w-32">
                     <img src={sleepingPersonImage} style={{ width: "100px"}} alt="sleeping person"></img>
                 </div>
