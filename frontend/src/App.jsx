@@ -5,6 +5,7 @@ import AdminHome from "./AdminHome/AdminHome";
 import LoginPage from "./LoginPage/LoginPage";
 import CreateAccount from "./CreateAccount/CreateAccount";
 import UserHome from "./UserHome/UserHome";
+import Footer from "./utils/Footer";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<CreateAccount />} />
         <Route path="/user/home" element={<UserHome />} />
+        <Route path="/utils/footer" element={<Footer />} />
       </Routes>
     </BrowserRouter>
   )
