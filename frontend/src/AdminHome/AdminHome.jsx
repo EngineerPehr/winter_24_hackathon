@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { employees } from "../../winter_24_hackathon/frontend/src/utils/api";
-import EmployeesList from "../../winter_24_hackathon/frontend/src/AdminHome/EmployeesList";
+import { employees } from "../utils/api";
+import EmployeesList from "./EmployeesList";
 
 // Placeholder admin goals data:
 const goals = {
