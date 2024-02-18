@@ -17,6 +17,7 @@ export default function AdminHome() {
         companyMood: "Decent"
     }
 
+
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
@@ -60,6 +61,7 @@ export default function AdminHome() {
                     </div>
                     <p>Total {goals.sleepHoursThisMonth.toLocaleString()} out of {goals.sleepHoursGoal.toLocaleString()} hours of sleep.</p>
                     <p className="mt-1">Check out ways to improve your company numbers</p>
+
                     <div className="mt-3">
                         <Link className="button-white-rounded border-4 px-10">See Report</Link>
                     </div>

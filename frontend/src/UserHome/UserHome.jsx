@@ -48,6 +48,7 @@ export default function UserHome() {
         },
     ]
 
+export default function UserHome() {
     return (
         <div className="columns-2">
             <div className="break-after-column m-6">
