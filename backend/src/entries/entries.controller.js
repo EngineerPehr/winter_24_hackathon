@@ -1,14 +1,14 @@
 const asyncErrorBoundary = require('../errors/asyncErrorBoundary')
 const service = require('./entries.service')
 
-async function entryExists(req, res, next) {
-    const { personId } = req.params
-    const data = await service.readEntry(personId)
+async function entryExists (req, res, next) {
+    const { entryId } = req.params
+    const data = await service.readEntry(entryId)
 
     if (!data) {
         return next({
             status: 404,
-            message: `Log entry '${personId}' does not exist`,
+            message: `Log entry '${entryId}' does not exist`,
         })
     } else {
         res.locals.entryData = data
@@ -16,7 +16,7 @@ async function entryExists(req, res, next) {
     }
 }
 
-async function personExists(req, res, next) {
+async function personExists (req, res, next) {
     const { personId } = req.params
     const data = await service.readPerson(personId)
 
@@ -31,7 +31,7 @@ async function personExists(req, res, next) {
     }
 }
 
-async function list(req, res) {
+async function list (req, res) {
     try {
         const data = await service.list()
         res.json({ data })
@@ -41,7 +41,7 @@ async function list(req, res) {
     }
 }
 
-async function create(req, res, next) {
+async function create (req, res, next) {
     const requestEntryData = req.body.data
     const newEntryData = { ...requestEntryData }
 
@@ -54,7 +54,7 @@ async function create(req, res, next) {
     }
 }
 
-function readPerson(req, res, next) {
+function readPerson (req, res, next) {
     try {
         const data = res.locals.userEntries
         res.json({ data })
@@ -64,7 +64,7 @@ function readPerson(req, res, next) {
     }
 }
 
-function readEntry(req, res, next) {
+function readEntry (req, res, next) {
     try {
         const data = res.locals.entryData
         res.json({ data })
@@ -74,7 +74,7 @@ function readEntry(req, res, next) {
     }
 }
 
-async function update(req, res) {
+async function update (req, res) {
     try {
         const { entry_id } = res.locals.entryData
         const updatedEntry = { ...req.body.data, entry_id }
@@ -87,7 +87,7 @@ async function update(req, res) {
     }
 }
 
-async function deleteEntry(req, res, next) {
+async function deleteEntry (req, res, next) {
     try {
         const { entryId } = req.params
         await service.deleteUser(entryId)
