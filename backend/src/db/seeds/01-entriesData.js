@@ -1,4 +1,4 @@
-const entriesData = require('./02-entriesData.json')
+const entriesData = require('./01-entriesData.json')
 
 exports.seed = function (knex) {
     return knex
