@@ -8,6 +8,7 @@ import UserHome from "./UserHome/UserHome";
 import Footer from "./utils/Footer";
 import UserAccount from "./CreateAccount/UserAccount";
 import UserActivityLog from "./UserActivityLog/UserActivityLog";
+import UserPastReports from "./UserPastReports/UserPastReports";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/user/account" element={<UserAccount />} />
         <Route path="/user/:userId/log" element={<UserActivityLog />} />
         <Route path="/user/account" element={<UserAccount />} />
+        <Route path="/user/:userId/history" element={<UserPastReports />} />
       </Routes>
     </BrowserRouter>
   )

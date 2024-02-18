@@ -24,16 +24,16 @@ export default function DropDownMenuButton({ options }) {
                     <Link to={options[0].route} className="block px-4 py-2 hover:bg-gray-100" reloadDocument>{options[0].option}</Link>
                 </li>
                 <li>
-                    <Link to={options[1].route} className="block px-4 py-2 hover:bg-gray-100">{options[1].option}</Link>
+                    <Link to={options[1].route} className="block px-4 py-2 hover:bg-gray-100" reloadDocument>{options[1].option}</Link>
                 </li>
                 <li>
-                    <Link to={options[2].route} className="block px-4 py-2 hover:bg-gray-100">{options[2].option}</Link>
+                    <Link to={options[2].route} className="block px-4 py-2 hover:bg-gray-100" reloadDocument>{options[2].option}</Link>
                 </li>
                 <li>
-                    <Link to={options[3].route} className="block px-4 py-2 hover:bg-gray-100">{options[3].option}</Link>
+                    <Link to={options[3].route} className="block px-4 py-2 hover:bg-gray-100" reloadDocument>{options[3].option}</Link>
                 </li>
                 <li>
-                    <Link to={options[4].route} className="block px-4 py-2 hover:bg-gray-100">{options[4].option}</Link>
+                    <Link to={options[4].route} className="block px-4 py-2 hover:bg-gray-100" reloadDocument>{options[4].option}</Link>
                 </li>
             </ul>
         </div>

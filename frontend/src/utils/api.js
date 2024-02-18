@@ -241,9 +241,20 @@ export async function createEntry(entry, signal) {
     return await fetchJson(url, options)
 }
 
-// Returns a single entry with the matching userId
+// Returns a single entry with the matching entryId
 export async function readEntryById(entryId, signal) {
     const url = `${API_BASE_URL}/entries/${entryId}`
+    const options = {
+        method: "GET",
+        headers,
+        signal
+    }
+
+    return await fetchJson(url, options)
+}
+
+export async function readEntriesByPerson(userId, signal) {
+    const url = `${API_BASE_URL}/user/${userId}`
     const options = {
         method: "GET",
         headers,

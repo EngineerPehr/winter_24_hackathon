@@ -11,24 +11,24 @@ export default function UserActivityLog() {
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
-            option: "Profile",
+            option: "Dashboard",
             route: `/user/${userId}/home`,
         },
         {
             option: "Report History",
-            route: "",
+            route: `/user/${userId}/history`,
         },
         {
-            option: "Additional Resources",
-            route: "",
+            option: "Log Activity",
+            route: `/user/${userId}/log`,
         },
         {
             option: "Settings",
-            route: "",
+            route: ``,
         },
         {
             option: "Privacy Policy",
-            route: "",
+            route: ``,
         },
     ]
     const suggestions = [
@@ -59,9 +59,6 @@ export default function UserActivityLog() {
         heart_rate: "",
         date: date
     })
-
-    // Placeholder for data that will be pulled from the backend
-    const userType = "user"
 
     // Adds form data to appropriate entry property as the user types in the field
     function handleChange({ target: { name, value }}) {
@@ -97,7 +94,7 @@ export default function UserActivityLog() {
                     <ActivityLogForm entry={entry} handleChange={handleChange} handleSubmit={handleSubmit}/>
                 </div>
                 <div className="flex flex-col my-2">
-                    <Link className="w-6/12 button-dark-rounded my-2">PAST REPORTS</Link>
+                    <Link to={`/user/${userId}/history`} className="w-6/12 button-dark-rounded my-2" reloadDocument>PAST REPORTS</Link>
                 </div>
                 <div className="">
                     <h2 className="text-2xl">Daily Goal Reminder</h2>
