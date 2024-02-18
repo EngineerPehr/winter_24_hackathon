@@ -3,24 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import DropDownMenuButton from "../utils/DropDownMenuButton";
 import ProgressBar from "../utils/ProgressBar";
 
-/*
-Just for reference until we get the api hooked up
-    const user = {
-        "person_id": 374,
-        "gender": "Female",
-        "age": 59,
-        "occupation": "Nurse",
-        "sleep_duration": "8.1",
-        "quality_of_sleep": 9,
-        "physical_activity_level": 75,
-        "stress_level": 3,
-        "bmi_category": "Overweight",
-        "blood_pressure": "140/95",
-        "heart_rate": 68,
-        "daily_steps": 7000,
-        "sleep_disorder": "Sleep Apnea"
-    }
-*/
 
 export default function UserHome() {
     const { userId } = useParams()
@@ -48,7 +30,6 @@ export default function UserHome() {
         },
     ]
 
-export default function UserHome() {
     return (
         <div className="columns-2">
             <div className="break-after-column m-6">

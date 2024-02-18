@@ -21,9 +21,9 @@ export default function EmployeeCard({ employee }) {
                     <img src={sleepingPersonImage} style={{ width: "100px"}} alt="sleeping person"></img>
                 </div>
                 <div className="flex-auto w-64">
-                    <h3>{employee.name}</h3>
+                    <h3>{employee.username}</h3>
                     <h4>Age: {employee.age}</h4>
-                    <h4>Gender: {employee.gender}</h4>
+                    <h4>Stress Level: {employee.stress_level}</h4>
                     <h4>Sleep Hours: {employee.sleep_duration}</h4>
                 </div>
                 <div className="flex flex-col justify-around text-xl">

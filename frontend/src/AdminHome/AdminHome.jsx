@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { employees } from "../utils/api";
 import EmployeesList from "./EmployeesList"
 import graph from "./graph.jpg"
 import ProgressBar from "../utils/ProgressBar";
 import DropDownMenuButton from "../utils/DropDownMenuButton";
+import Spinner from "../utils/Spinner";
+import { listUsers } from "../utils/api";
 
 
 export default function AdminHome() {
@@ -16,8 +18,6 @@ export default function AdminHome() {
         tasksGoal: 128,
         companyMood: "Decent"
     }
-
-
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
@@ -41,10 +41,27 @@ export default function AdminHome() {
             route: "",
         },
     ]
-
     // Calculate percent progress towards a goal
     const sleepHoursProgress = (goals.sleepHoursThisMonth / goals.sleepHoursGoal) * 100
     const tasksProgress = (goals.tasksMet / goals.tasksGoal) * 100
+    const [users, setUsers] = useState(null)
+    const [error, setError] = useState(null)
+
+    // Fetches all users from the API
+    const loadUsers = useCallback(async () => {
+        const abortController = new AbortController()
+    
+        try {
+            const response = await listUsers(abortController.signal)
+            setUsers(response)
+        } catch (error) {
+            setError(error)
+        } finally {
+            abortController.abort()
+        }
+    }, [])
+    
+    useEffect(() => loadUsers, [loadUsers])
 
     return (
         <div className="columns-2">
@@ -86,7 +103,12 @@ export default function AdminHome() {
                     <button className="button-white-rounded my-7 w-full ml-auto"><Link to="">Register A New Employee</Link></button>
                 </div>
                 <div className="overflow-y-auto h-96">
-                    <EmployeesList employees={employees}/>
+                    {users ? 
+                    <EmployeesList employees={users}/>
+                    :
+                    <Spinner />
+                    }
+                    
                 </div>
             </div>
         </div>
