@@ -1,6 +1,83 @@
 const asyncErrorBoundary = require('../errors/asyncErrorBoundary')
 const service = require('./entries.service')
 
+function validateField (value, type, criteria) {
+    switch (type) {
+        case 'string':
+            return (
+                typeof value === 'string' && value.length <= criteria.maxLength
+            )
+        case 'boolean':
+            return typeof value === 'boolean'
+        case 'number':
+            return (
+                typeof value === 'number' &&
+                value >= criteria.min &&
+                value <= criteria.max
+            )
+        default:
+            return false
+    }
+}
+
+function validateEnum (value, validValues) {
+    return validValues.includes(value)
+}
+
+function validateDate (value) {
+    const currentDate = new Date()
+    const inputDate = new Date(value)
+
+    return inputDate <= currentDate
+}
+
+function validateInput (req, res, next) {
+    const validationRules = {
+        username: { type: 'string', maxLength: 50 },
+        admin: { type: 'boolean' },
+        gender: { type: 'string', enum: ['Male', 'Female'] },
+        age: { type: 'number', min: 0, max: 200 },
+        sleep_duration: { type: 'number', min: 0, max: 24 },
+        quality_of_sleep: { type: 'number', min: 1, max: 10 },
+        physical_activity_level: { type: 'number', min: 0, max: 1440 },
+        stress_level: { type: 'number', min: 1, max: 10 },
+        bmi_category: {
+            type: 'string',
+            enum: ['Underweight', 'Normal', 'Overweight'],
+        },
+        blood_pressure: { type: 'string' },
+        heart_rate: { type: 'number', min: 20, max: 600 },
+        daily_steps: { type: 'number', min: 0, max: 100000 },
+        sleep_disorder: {
+            type: 'string',
+            enum: ['None', 'Insomnia', 'Sleep Apnea'],
+        },
+        date: { type: 'string', custom: validateDate },
+    }
+
+    for (const field in validationRules) {
+        const value = req.body.data[field]
+        const {
+            type,
+            maxLength,
+            enum: validValues,
+            min,
+            max,
+            custom,
+        } = validationRules[field]
+
+        if (
+            !validateField(value, type, { maxLength, min, max }) ||
+            (validValues && !validateEnum(value, validValues)) ||
+            (custom && !custom(value))
+        ) {
+            return res.status(400).json({ error: `Invalid ${field}` })
+        }
+    }
+
+    next()
+}
+
 async function entryExists (req, res, next) {
     const { entryId } = req.params
     const data = await service.readEntry(entryId)
@@ -100,10 +177,14 @@ async function deleteEntry (req, res, next) {
 
 module.exports = {
     list: asyncErrorBoundary(list),
-    create: asyncErrorBoundary(create),
+    create: [validateInput, asyncErrorBoundary(create)],
     readEntry: [asyncErrorBoundary(entryExists), readEntry],
     readPerson: [asyncErrorBoundary(personExists), readPerson],
-    update: [asyncErrorBoundary(entryExists), asyncErrorBoundary(update)],
+    update: [
+        validateInput,
+        asyncErrorBoundary(entryExists),
+        asyncErrorBoundary(update),
+    ],
     deleteEntry: [
         asyncErrorBoundary(entryExists),
         asyncErrorBoundary(deleteEntry),

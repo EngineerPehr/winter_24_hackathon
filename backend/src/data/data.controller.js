@@ -1,7 +1,76 @@
 const asyncErrorBoundary = require('../errors/asyncErrorBoundary')
 const service = require('./data.service')
 
-async function healthDataExists(req, res, next) {
+function validateField (value, type, criteria) {
+    switch (type) {
+        case 'string':
+            return (
+                typeof value === 'string' && value.length <= criteria.maxLength
+            )
+        case 'boolean':
+            return typeof value === 'boolean'
+        case 'number':
+            return (
+                typeof value === 'number' &&
+                value >= criteria.min &&
+                value <= criteria.max
+            )
+        default:
+            return false
+    }
+}
+
+function validateEnum (value, validValues) {
+    return validValues.includes(value)
+}
+
+function validateInput (req, res, next) {
+    const validationRules = {
+        username: { type: 'string', maxLength: 50 },
+        admin: { type: 'boolean' },
+        gender: { type: 'string', enum: ['Male', 'Female'] },
+        age: { type: 'number', min: 0, max: 200 },
+        sleep_duration: { type: 'number', min: 0, max: 24 },
+        quality_of_sleep: { type: 'number', min: 1, max: 10 },
+        physical_activity_level: { type: 'number', min: 0, max: 1440 },
+        stress_level: { type: 'number', min: 1, max: 10 },
+        bmi_category: {
+            type: 'string',
+            enum: ['Underweight', 'Normal', 'Overweight'],
+        },
+        blood_pressure: { type: 'string' },
+        heart_rate: { type: 'number', min: 20, max: 600 },
+        daily_steps: { type: 'number', min: 0, max: 100000 },
+        sleep_disorder: {
+            type: 'string',
+            enum: ['None', 'Insomnia', 'Sleep Apnea'],
+        },
+    }
+
+    for (const field in validationRules) {
+        const value = req.body.data[field]
+        const {
+            type,
+            maxLength,
+            enum: validValues,
+            min,
+            max,
+            custom,
+        } = validationRules[field]
+
+        if (
+            !validateField(value, type, { maxLength, min, max }) ||
+            (validValues && !validateEnum(value, validValues)) ||
+            (custom && !custom(value))
+        ) {
+            return res.status(400).json({ error: `Invalid ${field}` })
+        }
+    }
+
+    next()
+}
+
+async function healthDataExists (req, res, next) {
     const { personId } = req.params
     const data = await service.read(personId)
 
@@ -16,7 +85,7 @@ async function healthDataExists(req, res, next) {
     }
 }
 
-async function list(req, res) {
+async function list (req, res) {
     try {
         const data = await service.list()
         res.json({ data })
@@ -26,7 +95,7 @@ async function list(req, res) {
     }
 }
 
-async function create(req, res, next) {
+async function create (req, res, next) {
     const requestHealthData = req.body.data
     const newHealthData = { ...requestHealthData }
 
@@ -39,7 +108,7 @@ async function create(req, res, next) {
     }
 }
 
-function read(req, res, next) {
+function read (req, res, next) {
     try {
         const data = res.locals.healthData
         res.json({ data })
@@ -49,7 +118,7 @@ function read(req, res, next) {
     }
 }
 
-async function update(req, res) {
+async function update (req, res) {
     try {
         const { person_id } = res.locals.healthData
         const updatedHealthData = { ...req.body.data, person_id }
@@ -62,7 +131,7 @@ async function update(req, res) {
     }
 }
 
-async function deleteHealthData(req, res, next) {
+async function deleteHealthData (req, res, next) {
     try {
         const { personId } = req.params
         await service.deleteHealthData(personId)
@@ -75,9 +144,13 @@ async function deleteHealthData(req, res, next) {
 
 module.exports = {
     list: asyncErrorBoundary(list),
-    create: asyncErrorBoundary(create),
+    create: [validateInput, asyncErrorBoundary(create)],
     read: [asyncErrorBoundary(healthDataExists), read],
-    update: [asyncErrorBoundary(healthDataExists), asyncErrorBoundary(update)],
+    update: [
+        validateInput,
+        asyncErrorBoundary(healthDataExists),
+        asyncErrorBoundary(update),
+    ],
     deleteHealthData: [
         asyncErrorBoundary(healthDataExists),
         asyncErrorBoundary(deleteHealthData),
