@@ -6,6 +6,7 @@ import LoginPage from "./LoginPage/LoginPage";
 import CreateAccount from "./CreateAccount/CreateAccount";
 import UserHome from "./UserHome/UserHome";
 import Footer from "./utils/Footer";
+import UserAccount from "./CreateAccount/UserAccount";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/register" element={<CreateAccount />} />
         <Route path="/user/home" element={<UserHome />} />
         <Route path="/utils/footer" element={<Footer />} />
+        <Route path="/user/account" element={<UserAccount />} />
       </Routes>
     </BrowserRouter>
   )

@@ -3,13 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from "../utils/Footer";
 
 export default function LoginPage() {
-    const [userType, setUserType] = useState('');
-    const navigate = useNavigate(); // Initialize useHistory hook
+    const [userFullname, setUserFullname] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleUserTypeChange = (e) => {
-        setUserType(e.target.value);
+    const handleUserFullnameChange = (e) => {
+        setUserFullname(e.target.value);
     }
 
     const handleUsernameChange = (e) => {
@@ -22,14 +21,6 @@ export default function LoginPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (userType === "admin") {
-            // If admin is selected, navigate to admin page
-            navigate("/admin/home");
-        } else {
-            // Navigate to user account page
-            navigate("/user/account");
-        }
     };
 
     return (
@@ -39,14 +30,10 @@ export default function LoginPage() {
                 data-te-ripple-init>
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col items-center justify-center">
-                        {/* Select user type */}
-                        <div className="relative mt-8 mb-1 py-3 w-full rounded border-2" data-te-input-wrapper-init>
-                            <label htmlFor="userType" onChange={handleUserTypeChange}></label>
-                            <select name="dropdown" id="userType" value={userType}>
-                                <option value="/">Select Type of Account</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">User</option>
-                            </select>
+                        {/* User fullname input */}
+                        <div className="relative mt-6 mb-6 w-full rounded border-2" data-te-input-wrapper-init>
+                            <label htmlFor="fullname"></label>
+                            <input type="text" id="fullname" value={userFullname} placeholder="First and Last Name" onChange={handleUserFullnameChange} />
                         </div>
                         {/* Username input */}
                         <div className="relative mt-6 mb-6 w-full rounded border-2" data-te-input-wrapper-init>
@@ -67,18 +54,18 @@ export default function LoginPage() {
                             <button
                                 type="submit" 
                                 className="button-dark-rounded w-full mx-20"
-                             >
+                            >
                                 REGISTER
                             </button>
                         </div>
                     </div>
                 </form>
-            </div>
-
+            </div>                
+            
             {/* Footer section */}
             <div>
                 <Footer />
-            </div>            
+            </div>
         </div>
         )
     }
