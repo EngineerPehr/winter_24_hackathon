@@ -5,6 +5,8 @@ import { FaEyeSlash, FaX } from "react-icons/fa6";
 export default function EmployeeCard({ employee }) {
     const [hidden, setHidden] = useState(false)
 
+
+    // Hides this card
     const toggleVisibility = () => {
         hidden ? setHidden(false) : setHidden(true)
     }

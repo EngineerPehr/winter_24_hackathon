@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DropDownMenuButton from "../utils/DropDownMenuButton";
 import ProgressBar from "../utils/ProgressBar";
 
@@ -23,6 +23,32 @@ Just for reference until we get the api hooked up
 */
 
 export default function UserHome() {
+    const { userId } = useParams()
+    // Options to pass down to <DropDownMenuButton/>
+    const menuOptions = [
+        {
+            option: "Profile",
+            route: `/user/${userId}/home`,
+        },
+        {
+            option: "Report History",
+            route: ``,
+        },
+        {
+            option: "Additional Resources",
+            route: ``,
+        },
+        {
+            option: "Settings",
+            route: ``,
+        },
+        {
+            option: "Privacy Policy",
+            route: ``,
+        },
+    ]
+
+export default function UserHome() {
     return (
         <div className="columns-2">
             <div className="break-after-column m-6">
@@ -32,8 +58,8 @@ export default function UserHome() {
                     <p className="my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 </div>
                 <div className="flex flex-col pb-5">
-                    <button className="w-5/12 button-white-rounded my-2"><Link>LOG ACTIVITY</Link></button>
-                    <button className="w-5/12 button-dark-rounded my-2"><Link>PAST REPORTS</Link></button>
+                    <Link to={`/user/${userId}/log`} className="w-5/12 button-white-rounded my-2" reloadDocument>LOG ACTIVITY</Link>
+                    <Link to={``} className="w-5/12 button-dark-rounded my-2">PAST REPORTS</Link>
                 </div>
                 <div className="mt-5">
                     <h2 className="text-2xl">Recommended Goals</h2>
@@ -50,7 +76,7 @@ export default function UserHome() {
                 <div className="flex relative justify-center px-3 pt-3">
                 <h2 className="text-2xl">Last Month Metrics</h2>
                     <div className="absolute right-5 mt-1.5">
-                        <DropDownMenuButton options={["Profile", "Report History", "Additional Resources", "Settings", "Privacy Policy"]} />
+                        <DropDownMenuButton options={menuOptions} />
                     </div>
                 </div>
                 <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
