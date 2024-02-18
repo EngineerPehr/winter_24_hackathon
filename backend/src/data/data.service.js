@@ -12,7 +12,10 @@ function create(newHealthData) {
 }
 
 function read(personId) {
-    return knex('health_data').where({ person_id: personId }).first()
+    return knex('health_data')
+        .select('*')
+        .where({ person_id: personId })
+        .first()
 }
 
 function update(updatedHealthData) {
