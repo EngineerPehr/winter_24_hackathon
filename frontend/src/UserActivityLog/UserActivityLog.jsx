@@ -1,11 +1,34 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import DropDownMenuButton from "../utils/DropDownMenuButton";
 import ActivityLogForm from "./ActivityLogForm";
 import SuggestionCard from "./SuggestionCard";
 
 export default function UserActivityLog() {
-    const navigate = useNavigate(); // Initialize useHistory hook
+    const { userId } = useParams()
+    // Options to pass down to <DropDownMenuButton/>
+    const menuOptions = [
+        {
+            option: "Profile",
+            route: `/user/${userId}/home`,
+        },
+        {
+            option: "Report History",
+            route: "",
+        },
+        {
+            option: "Additional Resources",
+            route: "",
+        },
+        {
+            option: "Settings",
+            route: "",
+        },
+        {
+            option: "Privacy Policy",
+            route: "",
+        },
+    ]
     const suggestions = [
         {
             title: "Nutrition Tips",
@@ -24,6 +47,7 @@ export default function UserActivityLog() {
             tip: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         },
     ]
+    const navigate = useNavigate(); // Initialize useHistory hook
     const [entry, setEntry] = useState({
         sleep_duration: 6,
         bmi: 0,
@@ -66,7 +90,7 @@ export default function UserActivityLog() {
                     <ActivityLogForm entry={entry} handleChange={handleChange} handleSubmit={handleSubmit}/>
                 </div>
                 <div className="flex flex-col my-2">
-                    <button className="w-6/12 button-dark-rounded my-2 flex justify-center"><Link>PAST REPORTS</Link></button>
+                    <Link className="w-6/12 button-dark-rounded my-2">PAST REPORTS</Link>
                 </div>
                 <div className="">
                     <h2 className="text-2xl">Daily Goal Reminder</h2>
@@ -83,7 +107,7 @@ export default function UserActivityLog() {
                 <div className="flex relative justify-center px-3">
                 <h2 className="text-2xl">Sleep Quality Guides</h2>
                     <div className="absolute right-5 mt-1.5">
-                        <DropDownMenuButton options={["Profile", "Report History", "Additional Resources", "Settings", "Privacy Policy"]} />
+                        <DropDownMenuButton options={menuOptions} />
                     </div>
                 </div>
                 <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
