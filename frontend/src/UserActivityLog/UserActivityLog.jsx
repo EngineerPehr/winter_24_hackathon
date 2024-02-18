@@ -1,10 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import DropDownMenuButton from "../utils/DropDownMenuButton";
 import ActivityLogForm from "./ActivityLogForm";
 import SuggestionCard from "./SuggestionCard";
 
 export default function UserActivityLog() {
+    const navigate = useNavigate(); // Initialize useHistory hook
     const suggestions = [
         {
             title: "Nutrition Tips",
@@ -23,6 +24,37 @@ export default function UserActivityLog() {
             tip: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         },
     ]
+    const [entry, setEntry] = useState({
+        sleep_duration: 6,
+        bmi: 0,
+        steps: 0,
+        stress_level: 0,
+        heart_rate: 0,
+    })
+
+    // Placeholder for data that will be pulled from the backend
+    const userType = "user"
+
+    // Adds form data to appropriate entry property as the user types in the field
+    function handleChange({ target: { name, value }}) {
+        setEntry((previousEntry) => ({
+            ...previousEntry,
+            [name]: value
+        }))
+    }
+
+    // Awaiting a submit button and an api to submit to
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        if (userType === "admin") {
+            // If admin is selected, navigate to admin page
+            navigate("/admin/home");
+        } else {
+            // Navigate to user page
+            navigate("/user/home");
+        }
+    };
 
     return (
         <div className="columns-2">
@@ -31,7 +63,7 @@ export default function UserActivityLog() {
                     <h2 className="text-3xl font-bold">Today's Activity</h2>
                 </div>
                 <div className="mt-6">
-                    <ActivityLogForm />
+                    <ActivityLogForm entry={entry} handleChange={handleChange} handleSubmit={handleSubmit}/>
                 </div>
                 <div className="flex flex-col my-2">
                     <button className="w-6/12 button-dark-rounded my-2 flex justify-center"><Link>PAST REPORTS</Link></button>

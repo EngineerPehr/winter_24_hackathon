@@ -17,6 +17,7 @@ export default function AdminHome() {
         companyMood: "Decent"
     }
 
+    // Calculate percent progress towards a goal
     const sleepHoursProgress = (goals.sleepHoursThisMonth / goals.sleepHoursGoal) * 100
     const tasksProgress = (goals.tasksMet / goals.tasksGoal) * 100
 
