@@ -3,9 +3,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import DropDownMenuButton from "../utils/DropDownMenuButton";
 import ActivityLogForm from "./ActivityLogForm";
 import SuggestionCard from "./SuggestionCard";
+import { createEntry } from "../utils/api";
 
 export default function UserActivityLog() {
     const { userId } = useParams()
+    const [error, setError] = useState(null)
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
@@ -47,13 +49,15 @@ export default function UserActivityLog() {
             tip: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         },
     ]
+    const date = new Date()
     const navigate = useNavigate(); // Initialize useHistory hook
     const [entry, setEntry] = useState({
-        sleep_duration: 6,
-        bmi: 0,
-        steps: 0,
-        stress_level: 0,
-        heart_rate: 0,
+        sleep_duration: "",
+        bmi_category: "Normal",
+        daily_steps: "",
+        stress_level: "",
+        heart_rate: "",
+        date: date
     })
 
     // Placeholder for data that will be pulled from the backend
@@ -67,16 +71,19 @@ export default function UserActivityLog() {
         }))
     }
 
-    // Awaiting a submit button and an api to submit to
-    const handleSubmit = (e) => {
+    // Creates a new entry with today's date
+    const handleSubmit = async (e) => {
         e.preventDefault();
-    
-        if (userType === "admin") {
-            // If admin is selected, navigate to admin page
-            navigate("/admin/home");
-        } else {
-            // Navigate to user page
-            navigate("/user/home");
+
+        const abortController = new AbortController()
+
+        try {
+            await createEntry(entry, abortController.signal)
+        } catch (er) {
+            setError(er)
+        } finally {
+            abortController.abort()
+            navigate(`/user/${userId}/home`);
         }
     };
 
