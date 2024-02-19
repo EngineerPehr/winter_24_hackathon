@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../utils/Footer";
 
-export default function LoginPage() {
+export default function CreateUserAccount() {
+    let user;
     const [userFullname, setUserFullname] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -31,31 +32,31 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col items-center justify-center">
                         {/* User fullname input */}
-                        <div className="relative mt-6 mb-6 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div className="relative my-6 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
                             <label htmlFor="fullname"></label>
-                            <input type="text" id="fullname" value={userFullname} placeholder="First and Last Name" onChange={handleUserFullnameChange} />
+                            <input type="string" id="fullname" value={userFullname} placeholder="First and Last Name" onChange={handleUserFullnameChange} />
                         </div>
                         {/* Username input */}
-                        <div className="relative mt-6 mb-6 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div className="relative mb-6 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
                             <label htmlFor="username"></label>
-                            <input type="text" id="username" value={username} placeholder="Enter Username" onChange={handleUsernameChange} />
+                            <input type="string" id="username" value={username} placeholder="Enter Username" onChange={handleUsernameChange} />
                         </div>
                         {/* Password input */}
-                        <div class="relative mb-6 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div class="relative mb-6 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
                             <label htmlFor="password"></label>
-                            <input type="password" id="password" value={password} placeholder="Password" onChange={handlePasswordChange} />
+                            <input type="string" id="password" value={password} placeholder="Password" onChange={handlePasswordChange} />
                         </div>
-                        <div class="relative mb-6 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div class="relative mb-6 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
                             <label htmlFor="password"></label>
-                            <input type="password" id="password" value={password} placeholder="Confirm Password" onChange={handlePasswordChange} />
+                            <input type="string" id="password" value={password} placeholder="Confirm Password" onChange={handlePasswordChange} />
                         </div>
-                        {/* Register button */}
+                        {/* Continue button */}
                         <div className="flex flex-col items-center justify-center">
                             <button
                                 type="submit" 
                                 className="button-dark-rounded w-full mx-20"
                             >
-                                REGISTER
+                            <a href="/user/registerForm">CONTINUE</a>
                             </button>
                         </div>
                     </div>
