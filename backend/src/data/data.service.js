@@ -1,31 +1,40 @@
 const knex = require('../db/connection')
 
-function list() {
+function list () {
     return knex('health_data').select('*').orderBy('person_id')
 }
 
-function create(newHealthData) {
+function create (newHealthData) {
     return knex('health_data')
         .insert(newHealthData)
         .returning('*')
-        .then((createdRecords) => createdRecords[0])
+        .then(createdRecords => createdRecords[0])
 }
 
-function read(personId) {
+function read (personId) {
     return knex('health_data')
         .select('*')
         .where({ person_id: personId })
         .first()
 }
 
-function update(updatedHealthData) {
+function update (updatedHealthData) {
     return knex('health_data')
         .where({ person_id: updatedHealthData.person_id })
         .update(updatedHealthData, '*')
 }
 
-function deleteHealthData(personId) {
-    return knex('health_data').where({ person_id: personId }).del()
+async function deleteHealthData (personId) {
+    try {
+        await knex.transaction(async trx => {
+            await trx('health_data').where({ person_id: personId }).del()
+            await trx('entries').where({ person_id: personId }).del()
+        })
+        return 'User was successfully deleted.'
+    } catch (error) {
+        console.error(error)
+        return 'Failed to delete user'
+    }
 }
 
 module.exports = {
