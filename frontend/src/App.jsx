@@ -6,8 +6,12 @@ import LoginPage from "./LoginPage/LoginPage";
 import CreateAccount from "./CreateAccount/CreateAccount";
 import UserHome from "./UserHome/UserHome";
 import Footer from "./utils/Footer";
-import UserAccount from "./CreateAccount/UserAccount";
 import UserActivityLog from "./UserActivityLog/UserActivityLog";
+import CreateUserAccount from "./CreateAccount/CreateUserAccount";
+import CreateAdminAccount from "./CreateAccount/CreateAdminAccount";
+import UserRegisterForm from "./CreateAccount/UserRegisterForm";
+// import TipsPage from "./Tips/TipsPage";
+
 import UserPastReports from "./UserPastReports/UserPastReports";
 
 export default function App() {
@@ -20,9 +24,11 @@ export default function App() {
         <Route path="/register" element={<CreateAccount />} />
         <Route path="/user/:userId/home" element={<UserHome />} />
         <Route path="/utils/footer" element={<Footer />} />
-        <Route path="/user/account" element={<UserAccount />} />
+        <Route path="/user/account" element={<CreateUserAccount />} />
+        <Route path="/admin/account" element={<CreateAdminAccount />} />
         <Route path="/user/:userId/log" element={<UserActivityLog />} />
-        <Route path="/user/account" element={<UserAccount />} />
+        <Route path="/user/registerForm" element={<UserRegisterForm />} />
+        {/* <Route path="/tips/options" element={<TipsPage />} /> */}
         <Route path="/user/:userId/history" element={<UserPastReports />} />
       </Routes>
     </BrowserRouter>
