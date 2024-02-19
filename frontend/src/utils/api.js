@@ -254,7 +254,7 @@ export async function readEntryById(entryId, signal) {
 }
 
 export async function readEntriesByPerson(userId, signal) {
-    const url = `${API_BASE_URL}/user/${userId}`
+    const url = `${API_BASE_URL}/entries/user/${userId}`
     const options = {
         method: "GET",
         headers,

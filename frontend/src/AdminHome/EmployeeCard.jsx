@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { deleteUser } from "../utils/api";
 import sleepingPersonImage from "./sleeping_person.jpg";
 import { FaEyeSlash, FaEye } from "react-icons/fa6";
-import RemoveEmployeeButton from "./RemoveEmployeeButton";
+import RemoveCardButton from "../utils/RemoveCardButton";
 
 export default function EmployeeCard({ employee, setError, loadUsers}) {
     const [hidden, setHidden] = useState(false)
     const [openModal, setOpenModal] = useState(false);
 
-    // RemoveEmployeeButton functionality, deletes
+    // RemoveEmployeeButton functionality, deletes employee
     async function handleDelete() {
         const abortController = new AbortController()
     
@@ -52,7 +52,7 @@ export default function EmployeeCard({ employee, setError, loadUsers}) {
                     <h4>Sleep Hours: {employee.sleep_duration}</h4>
                 </div>
                 <div className="flex flex-col justify-around text-xl">
-                    <RemoveEmployeeButton openModal={openModal} setOpenModal={setOpenModal} handleDelete={handleDelete}/>
+                    <RemoveCardButton openModal={openModal} setOpenModal={setOpenModal} handleDelete={handleDelete} option={"employee"}/>
                     <button onClick={toggleVisibility} ><FaEyeSlash /></button>
                 </div>
             </div>

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { readEntriesByPerson } from "../utils/api";
 import DropDownMenuButton from "../utils/DropDownMenuButton";
+import EntriesList from "./EntriesList";
 
 export default function UserPastReports() {
     const { userId } = useParams()
+
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
@@ -28,12 +29,14 @@ export default function UserPastReports() {
             route: ``,
         },
     ]
+    const [listOrder, setListOrder] = useState("newest")
+
     return (
         <>
                 <div className="columns-2">
             <div className="break-after-column m-6">
                 <div className="pt-2">
-                    <h1 className="text-3xl font-bold">Welcome Anonymous369</h1>
+                    <h1 className="text-3xl font-bold">Your Recent Progress</h1>
                     <hr className="h-px border-0" style={{ backgroundColor: "#000000"}} />
                     <p className="my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 </div>
@@ -52,19 +55,23 @@ export default function UserPastReports() {
                     </div>
                 </div>
             </div>
-            <div className="bg-gray-300 m-6">
-                <div className="flex relative justify-center px-3 pt-3">
+            <div className="bg-gray-300 m-6 pb-7">
+                <div className="flex relative justify-center px-3 pt-1">
                 <h2 className="text-2xl">Last Month Metrics</h2>
                     <div className="absolute right-5 mt-1.5">
                         <DropDownMenuButton options={menuOptions} />
                     </div>
                 </div>
                 <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
-                <div className="px-3">
-                    <button className="button-white-rounded my-7 w-full ml-auto"><Link to="">Register A New Employee</Link></button>
+                <div className="flex justify-end gap-2 px-3 py-4">
+                    <label htmlFor="sort" className="text-xl font-bold pt-2">Sort By: </label>
+                    <select id="sort" name="sort" className=" rounded-lg w-28">
+                        <option value={() => setListOrder("newest")}>Newest </option>
+                        <option value={() => setListOrder("oldest")}>Oldest </option>
+                    </select>
                 </div>
-                <div className="overflow-y-auto h-96">
-                    
+                <div className="overflow-y-auto border-2 rounded-sm border-slate-800 h-96 m-1">
+                    <EntriesList />
                 </div>
             </div>
         </div>
