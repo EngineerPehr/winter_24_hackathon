@@ -18,6 +18,10 @@ function read (personId) {
         .first()
 }
 
+function readByUsername (username) {
+    return knex('health_data').select('*').where({ username: username }).first()
+}
+
 function update (updatedHealthData) {
     return knex('health_data')
         .where({ person_id: updatedHealthData.person_id })
@@ -41,6 +45,7 @@ module.exports = {
     list,
     create,
     read,
+    readByUsername,
     update,
     deleteHealthData,
 }
