@@ -85,6 +85,43 @@ async function healthDataExists (req, res, next) {
     }
 }
 
+async function healthDataExists (req, res, next) {
+    if (req.params.personId) {
+        // For personId validation
+        const { personId } = req.params
+        const data = await service.read(personId)
+
+        if (!data) {
+            return next({
+                status: 404,
+                message: `Health data for Person ID '${personId}' does not exist`,
+            })
+        } else {
+            res.locals.healthData = data
+            next()
+        }
+    } else if (req.params.username) {
+        // For username validation
+        const { username } = req.params
+        const userData = await service.readByUsername(username)
+
+        if (!userData) {
+            return next({
+                status: 404,
+                message: `User with username '${username}' not found`,
+            })
+        } else {
+            res.locals.healthData = userData
+            next()
+        }
+    } else {
+        return next({
+            status: 400,
+            message: 'Invalid route. Missing parameter.',
+        })
+    }
+}
+
 async function list (req, res) {
     try {
         const data = await service.list()
@@ -146,6 +183,7 @@ module.exports = {
     list: asyncErrorBoundary(list),
     create: [validateInput, asyncErrorBoundary(create)],
     read: [asyncErrorBoundary(healthDataExists), read],
+    readByUsername: [asyncErrorBoundary(healthDataExists), read],
     update: [
         validateInput,
         asyncErrorBoundary(healthDataExists),
