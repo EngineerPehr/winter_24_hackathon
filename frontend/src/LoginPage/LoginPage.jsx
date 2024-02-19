@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Footer from '../utils/Footer'
 // import UserHome from "./UserHome";
 import { readUserByUsername } from '../utils/api'
 import '../index.css'
@@ -111,11 +110,6 @@ export default function LoginPage() {
                         </p>
                     </div>
                 </form>
-            </div>
-
-            {/* Footer section */}
-            <div>
-                <Footer />
             </div>
         </div>
     )

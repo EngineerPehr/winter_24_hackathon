@@ -1,73 +1,103 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 // import { Link, useNavigate } from "react-router-dom";
-import Footer from "../utils/Footer";
 
 export default function CreateAdminAccount() {
-    let admin;
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
+    let admin
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
     const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
+        setUsername(e.target.value)
     }
 
     const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
+        setPassword(e.target.value)
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-    };
+        e.preventDefault()
+    }
 
     return (
         <div className="flex flex-col items-center justify-center">
-            <h1 className="mt-8 text-3xl font-bold">You're On the Journey to Better Mental Health</h1>
-            <div className="mt-5 mb-2 block w-1/2 rounded border-2 border-black px-6 pb-[6px] pt-2 text-s font-medium leading-normal text-primary"
-                data-te-ripple-init>
+            <h1 className="mt-8 text-3xl font-bold">
+                You're On the Journey to Better Mental Health
+            </h1>
+            <div
+                className="mt-5 mb-2 block w-1/2 rounded border-2 border-black px-6 pb-[6px] pt-2 text-s font-medium leading-normal text-primary"
+                data-te-ripple-init
+            >
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col items-center justify-center">
                         {/* Admin selected */}
-                        <div className="relative mt-6 mb-2 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div
+                            className="relative mt-6 mb-2 py-2 px-2 w-full rounded border-2"
+                            data-te-input-wrapper-init
+                        >
                             <label htmlFor="admin"></label>
-                            <input type="string" id="admin" value={admin} placeholder="Admin" />
+                            <input
+                                type="string"
+                                id="admin"
+                                value={admin}
+                                placeholder="Admin"
+                            />
                         </div>
                         {/* Username input */}
-                        <div className="relative mt-6 mb-8 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div
+                            className="relative mt-6 mb-8 py-2 px-2 w-full rounded border-2"
+                            data-te-input-wrapper-init
+                        >
                             <label htmlFor="username"></label>
-                            <input type="string" id="username" value={username} placeholder="Enter Username" onChange={handleUsernameChange} />
+                            <input
+                                type="string"
+                                id="username"
+                                value={username}
+                                placeholder="Enter Username"
+                                onChange={handleUsernameChange}
+                            />
                         </div>
                         {/* Password input */}
-                        <div class="relative mb-8 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div
+                            class="relative mb-8 py-2 px-2 w-full rounded border-2"
+                            data-te-input-wrapper-init
+                        >
                             <label htmlFor="password"></label>
-                            <input type="string" id="password" value={password} placeholder="Password" onChange={handlePasswordChange} />
+                            <input
+                                type="string"
+                                id="password"
+                                value={password}
+                                placeholder="Password"
+                                onChange={handlePasswordChange}
+                            />
                         </div>
-                        <div class="relative mb-6 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div
+                            class="relative mb-6 py-2 px-2 w-full rounded border-2"
+                            data-te-input-wrapper-init
+                        >
                             <label htmlFor="password"></label>
-                            <input type="string" id="password" value={password} placeholder="Confirm Password" onChange={handlePasswordChange} />
+                            <input
+                                type="string"
+                                id="password"
+                                value={password}
+                                placeholder="Confirm Password"
+                                onChange={handlePasswordChange}
+                            />
                         </div>
                         {/* Register button */}
                         <div className="flex flex-col items-center justify-center">
                             <button
-                                type="submit" 
-                                className="button-dark-rounded w-full mx-20"    
+                                type="submit"
+                                className="button-dark-rounded w-full mx-20"
                             >
-                            <a href="/admin/home">REGISTER</a>
-                                
+                                <a href="/admin/home">REGISTER</a>
                             </button>
                         </div>
                     </div>
                 </form>
-            </div>                
-            
-            {/* Footer section */}
-            <div>
-                <Footer />
             </div>
         </div>
-        )
-    }
-
+    )
+}
 
 // import React, { useState } from "react";
 // import { Link, useNavigate } from "react-router-dom";
@@ -133,7 +163,7 @@ export default function CreateAdminAccount() {
 //                         {/* Register button */}
 //                         <div className="flex flex-col items-center justify-center">
 //                             <button
-//                                 type="submit" 
+//                                 type="submit"
 //                                 className="button-dark-rounded w-full mx-20"
 //                             >
 //                                 REGISTER
@@ -141,8 +171,8 @@ export default function CreateAdminAccount() {
 //                         </div>
 //                     </div>
 //                 </form>
-//             </div>                
-            
+//             </div>
+
 //             {/* Footer section */}
 //             <div>
 //                 <Footer />
