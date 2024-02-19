@@ -1,37 +1,39 @@
 const knex = require('../db/connection')
 
-function list() {
+function list () {
     return knex('entries').select('*').orderBy('entry_id')
 }
 
-function create(newEntryData) {
+function create (newEntryData) {
     console.log('Input data:', newEntryData)
 
     return knex('entries')
         .insert(newEntryData)
         .returning('*')
-        .then((createdRecords) => createdRecords[0])
-        .catch((error) => {
+        .then(createdRecords => createdRecords[0])
+        .catch(error => {
             console.error('Error creating entry:', error)
             throw error
         })
 }
 
-function readPerson(personId) {
-    return knex('entries').where({ person_id: personId })
+function readPerson (personId) {
+    return knex('entries')
+        .where({ person_id: personId })
+        .orderBy('date', 'desc')
 }
 
-function readEntry(entryId) {
+function readEntry (entryId) {
     return knex('entries').where({ entry_id: entryId }).first()
 }
 
-function update(updatedEntryData) {
+function update (updatedEntryData) {
     return knex('entries')
         .where({ entry_id: updatedEntryData.entry_id })
         .update(updatedEntryData, '*')
 }
 
-function deleteEntry(entryId) {
+function deleteEntry (entryId) {
     return knex('entries').where({ entry_id: entryId }).del()
 }
 
