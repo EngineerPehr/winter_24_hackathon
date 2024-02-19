@@ -12,6 +12,7 @@ import CreateAdminAccount from "./CreateAccount/CreateAdminAccount";
 import UserRegisterForm from "./CreateAccount/UserRegisterForm";
 // import TipsPage from "./Tips/TipsPage";
 
+
 export default function App() {
   return (
     <BrowserRouter>
