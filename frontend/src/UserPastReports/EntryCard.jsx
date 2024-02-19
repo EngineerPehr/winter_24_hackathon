@@ -5,10 +5,14 @@ import RemoveCardButton from "../utils/RemoveCardButton"
 import meterImageGood from "./good.jpg"
 import meterImageBad from "./bad.jpg"
 import meterImageOk from "./ok.jpg"
+import moment from 'moment';
+
 
 export default function EntryCard({ entry, setError, loadEntries }) {
     const [hidden, setHidden] = useState(false)
     const [openModal, setOpenModal] = useState(false)
+    const { date } = entry
+    const formattedDate = moment(date).format('dddd, MMMM Do YYYY')
 
 
     // RemoveEntryButton functionality, deletes entry
@@ -42,7 +46,7 @@ export default function EntryCard({ entry, setError, loadEntries }) {
         return (
             <>
             <div className="flex justify-between p-2 my-2 hover:bg-gray-100">
-                <h3 className="font-bold">{entry.date}</h3>
+                <h3 className="font-bold">{formattedDate}</h3>
                 <button onClick={toggleVisibility} className="text-lg"><FaEye /></button>
             </div>
             </>
@@ -55,7 +59,7 @@ export default function EntryCard({ entry, setError, loadEntries }) {
                     <img src={imgSource} style={{ width: "100px"}} alt="sleeping person"></img>
                 </div>
                 <div className="flex-auto w-64">
-                    <h3 className="font-bold rounded-sm bg-slate-100 ps-3">{entry.date}</h3>
+                    <h3 className="font-bold rounded-sm bg-slate-100 ps-1">{formattedDate}</h3>
                     <h4>Sleep Hours: {entry.sleep_duration}</h4>
                     <h4>BMI Category: {entry.bmi_category}</h4>
                     <h4>Steps: {entry.daily_steps}</h4>

@@ -8,7 +8,20 @@ module.exports = {
     fontFamily: {
       'arial': ["Arial", "ui-sans-serif", "ui-serif", "system-ui"]
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          1: '#000000',
+          2: '#F1F0F0',
+          3: '#0B1997',
+          4: '#6197BE',
+        },
+        accent: {
+          1: '#51565A',
+          2: '#022B69',
+        },
+      },
+    },
   },
   plugins: [
     require('flowbite/plugin')

@@ -4,7 +4,7 @@ import { readEntriesByPerson } from "../utils/api";
 import EntryCard from "./EntryCard";
 import Spinner from "../utils/Spinner";
 
-export default function EntriesList() {
+export default function EntriesList({ listOrder, setListOrder}) {
     const { userId } = useParams()
     const [entries, setEntries] = useState([])
     const [error, setError] = useState(null)
@@ -14,7 +14,6 @@ export default function EntriesList() {
         const abortController = new AbortController()
     
         try {
-            console.log(`userId: ${userId}`)
             const response = await readEntriesByPerson(userId, abortController.signal)
             setEntries(response)
         } catch (error) {
@@ -25,6 +24,8 @@ export default function EntriesList() {
     }, [])
     
     useEffect(() => loadEntries, [loadEntries])
+
+    useEffect(() => setEntries(entries.toReversed()), [listOrder])
 
     if (entries) {
         return (

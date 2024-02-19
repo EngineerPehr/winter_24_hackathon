@@ -220,8 +220,6 @@ export async function deleteUser(userId, signal) {
 }
 
 // Returns an array of all entries for all users
-// Will probably adapt this to list all entries for *one* user
-// Maybe add a query for a range of dates idk
 export async function listEntries(signal) {
     const url = `${API_BASE_URL}/entries`
 

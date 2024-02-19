@@ -31,12 +31,16 @@ export default function UserPastReports() {
     ]
     const [listOrder, setListOrder] = useState("newest")
 
+    function toggleListOrder({ target }) {
+        setListOrder(target.value)
+    }
+
     return (
         <>
                 <div className="columns-2">
             <div className="break-after-column m-6">
                 <div className="pt-2">
-                    <h1 className="text-3xl font-bold">Your Recent Progress</h1>
+                    <h1 className="text-3xl font-bold">Past Reports</h1>
                     <hr className="h-px border-0" style={{ backgroundColor: "#000000"}} />
                     <p className="my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 </div>
@@ -57,7 +61,7 @@ export default function UserPastReports() {
             </div>
             <div className="bg-gray-300 m-6 pb-7">
                 <div className="flex relative justify-center px-3 pt-1">
-                <h2 className="text-2xl">Last Month Metrics</h2>
+                <h2 className="text-2xl">Activity Log Summary</h2>
                     <div className="absolute right-5 mt-1.5">
                         <DropDownMenuButton options={menuOptions} />
                     </div>
@@ -65,13 +69,13 @@ export default function UserPastReports() {
                 <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
                 <div className="flex justify-end gap-2 px-3 py-4">
                     <label htmlFor="sort" className="text-xl font-bold pt-2">Sort By: </label>
-                    <select id="sort" name="sort" className=" rounded-lg w-28">
-                        <option value={() => setListOrder("newest")}>Newest </option>
-                        <option value={() => setListOrder("oldest")}>Oldest </option>
+                    <select id="sort" name="sort" className=" rounded-lg w-28" onChange={toggleListOrder}>
+                        <option value="newest">Newest </option>
+                        <option value="oldest">Oldest </option>
                     </select>
                 </div>
                 <div className="overflow-y-auto border-2 rounded-sm border-slate-800 h-96 m-1">
-                    <EntriesList />
+                    <EntriesList listOrder={listOrder}/>
                 </div>
             </div>
         </div>

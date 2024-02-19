@@ -80,8 +80,8 @@ export default function AdminHome() {
                     </div>
                 </div>
                 <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
-                <div className="px-3">
-                    <button className="button-white-rounded my-7 w-full ml-auto"><Link to="">Register A New Employee</Link></button>
+                <div className="flex justify-center px-3">
+                    <Link to="/register" className="button-white-rounded my-6 w-full ml-auto">Register A New Employee</Link>
                 </div>
                 <div className="overflow-y-auto h-96">
                     <EmployeesList />
