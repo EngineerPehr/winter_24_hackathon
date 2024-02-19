@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Footer from "../utils/Footer";
 
-export default function LoginPage() {
+export default function CreateAccount() {
     const [userType, setUserType] = useState('');
     const navigate = useNavigate(); // Initialize useHistory hook
     const [username, setUsername] = useState('');
@@ -24,10 +24,10 @@ export default function LoginPage() {
         e.preventDefault();
 
         if (userType === "admin") {
-            // If admin is selected, navigate to admin page
-            navigate("/admin/home");
+            // If admin is selected, navigate to Create admin account page
+            navigate("/admin/account");
         } else {
-            // Navigate to user account page
+            // Navigate to Create user account page
             navigate("/user/account");
         }
     };
@@ -40,27 +40,27 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col items-center justify-center">
                         {/* Select user type */}
-                        <div className="relative mt-8 mb-1 py-3 w-full rounded border-2" data-te-input-wrapper-init>
-                            <label htmlFor="userType" onChange={handleUserTypeChange}></label>
-                            <select name="dropdown" id="userType" value={userType}>
+                        <div className="relative mt-8 mb-2 py-2 w-full rounded border-2" data-te-input-wrapper-init>
+                            <label htmlFor="userType"></label>
+                            <select name="dropdown" id="userType" onChange={handleUserTypeChange}>
                                 <option value="/">Select Type of Account</option>
                                 <option value="admin">Admin</option>
                                 <option value="user">User</option>
                             </select>
                         </div>
                         {/* Username input */}
-                        <div className="relative mt-6 mb-6 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div className="relative my-6 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
                             <label htmlFor="username"></label>
-                            <input type="text" id="username" value={username} placeholder="Enter Username" onChange={handleUsernameChange} />
+                            <input type="string" id="username" value={username} placeholder="Enter Username" onChange={handleUsernameChange} />
                         </div>
                         {/* Password input */}
-                        <div class="relative mb-6 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div class="relative mb-6 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
                             <label htmlFor="password"></label>
-                            <input type="password" id="password" value={password} placeholder="Password" onChange={handlePasswordChange} />
+                            <input type="string" id="password" value={password} placeholder="Password" onChange={handlePasswordChange} />
                         </div>
-                        <div class="relative mb-6 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div class="relative mb-6 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
                             <label htmlFor="password"></label>
-                            <input type="password" id="password" value={password} placeholder="Confirm Password" onChange={handlePasswordChange} />
+                            <input type="string" id="password" value={password} placeholder="Confirm Password" onChange={handlePasswordChange} />
                         </div>
                         {/* Register button */}
                         <div className="flex flex-col items-center justify-center">
@@ -71,6 +71,7 @@ export default function LoginPage() {
                                 REGISTER
                             </button>
                         </div>
+                        <p>Or, <a href="./login" className="underline">Sign In</a></p> 
                     </div>
                 </form>
             </div>

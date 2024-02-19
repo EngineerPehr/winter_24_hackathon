@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Footer from "../utils/Footer";
+// import UserHome from "./UserHome";
 import "../index.css";
 
 export default function LoginPage() {
@@ -17,13 +18,14 @@ export default function LoginPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // if (userType === "admin") {
-        //     // If admin is selected, navigate to admin page
+    
+    
+        // if (userId === "admin") {
+        //     // If user registered as admin, navigate to admin page
         //     navigate("/admin/home");
         // } else {
         //     // Navigate to user account page
-        //     navigate("/user/account");
+        //     navigate("/user/home");
         // }
     }
 
@@ -35,14 +37,14 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col items-center justify-center">
                         {/* Username input */}
-                        <div className="relative mt-8 mb-6 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div className="relative mt-8 mb-6 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
                             <label htmlFor="username"></label>
-                            <input type="text" id="username" value={username} placeholder="Enter Username" onChange={handleUsernameChange} />
+                            <input type="string" id="username" value={username} placeholder="Enter Username" onChange={handleUsernameChange} />
                         </div>
                         {/* Password input */}
-                        <div class="relative mb-6 w-full rounded border-2" data-te-input-wrapper-init>
+                        <div class="relative mb-6 py-2 px-2 w-full rounded border-2" data-te-input-wrapper-init>
                             <label htmlFor="password"></label>
-                            <input type="password" id="password" value={password} placeholder="........" onChange={handlePasswordChange} />
+                            <input type="string" id="password" value={password} placeholder="........" onChange={handlePasswordChange} />
                         </div>
                         <div className="flex flex-col items-center justify-center mt-6 mb-20">
                             <p>Forget your password?</p>
@@ -57,6 +59,7 @@ export default function LoginPage() {
                                 SIGN IN
                             </button>
                         </div>
+                        <p>Or, <a href="./register" className="underline">Register</a></p>        
                     </div>
                 </form>
             </div>
