@@ -220,8 +220,6 @@ export async function deleteUser(userId, signal) {
 }
 
 // Returns an array of all entries for all users
-// Will probably adapt this to list all entries for *one* user
-// Maybe add a query for a range of dates idk
 export async function listEntries(signal) {
     const url = `${API_BASE_URL}/entries`
 
@@ -241,9 +239,20 @@ export async function createEntry(entry, signal) {
     return await fetchJson(url, options)
 }
 
-// Returns a single entry with the matching userId
+// Returns a single entry with the matching entryId
 export async function readEntryById(entryId, signal) {
     const url = `${API_BASE_URL}/entries/${entryId}`
+    const options = {
+        method: "GET",
+        headers,
+        signal
+    }
+
+    return await fetchJson(url, options)
+}
+
+export async function readEntriesByPerson(userId, signal) {
+    const url = `${API_BASE_URL}/entries/user/${userId}`
     const options = {
         method: "GET",
         headers,

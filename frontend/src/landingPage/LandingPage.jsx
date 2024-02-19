@@ -17,40 +17,19 @@ export default function LandingPage() {
                 {/* Buttons section */}
                 <div className="bg-gray-300 m-10 pb-3">
                     <div className="flex flex-col items-center justify-center">
-                        <p className="text-2xl mt-8 mb-5">Already a member?</p>
-                        <div className="pb-5 px-10 mt-3">
-                            <Link to={`/login`} 
-                                className="w-1/2 rounded border-2 border-black leading normal 
-                                    px-20 py-3 
-                                    text-xl font-bold text-primary 
-                                    transition duration-150 ease-in-out 
-                                    hover:border-primary-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-primary-600 
-                                    focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 
-                                    active:border-primary-700 active:text-primary-700
-                                     dark:hover:bg-neutral-100 dark:hover:bg-opacity-10 border-black 
-                                     hover:bg-gray-100 focus:ring-4
-                                     focus:outline-none focus:ring-gray-100 
-                                     rounded-xl px-5 py-1 me-2 mb-2"
-                                >SIGN IN
-                            </Link>
-                        </div>
-                        <p className="text-2xl mt-12 mb-5">Don't have an account?</p>
-                        <div className="pb-5 px-10 mt-3 mb-6">
-                            <Link to={`/login`} 
-                                className="w-1/2 rounded border-2 border-black leading normal 
-                                    px-20 py-3 
-                                    text-xl font-bold text-primary 
-                                    transition duration-150 ease-in-out 
-                                    hover:border-primary-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-primary-600 
-                                    focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 
-                                    active:border-primary-700 active:text-primary-700
-                                     dark:hover:bg-neutral-100 dark:hover:bg-opacity-10 border-black 
-                                     hover:bg-gray-100 focus:ring-4
-                                     focus:outline-none focus:ring-gray-100 
-                                     rounded-xl px-5 py-1 me-2 mb-2"
-                                >REGISTER
-                            </Link>
-                        </div>
+                        <p className="text-2xl mt-8 mb-6">Already a member?</p>
+                        <button                             
+                             className="mb-3 block w-1/2 rounded border-2 border-black px-6 pb-[6px] pt-2 text-xl font-bold uppercase leading-normal text-primary transition duration-150 ease-in-out hover:border-primary-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-primary-600 focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:border-primary-700 active:text-primary-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                             
+                             data-te-ripple-init>
+                            <Link to="/login">SIGN IN</Link>
+                        </button>
+                        <p className="text-2xl my-5 mt-10">Don't have an account?</p>
+                        <button 
+                            className="mb-10 block w-1/2 rounded border-2 border-black px-6 pb-[6px] pt-2 text-xl font-bold uppercase leading-normal text-primary transition duration-150 ease-in-out hover:border-primary-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-primary-600 focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:border-primary-700 active:text-primary-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+                            data-te-ripple-init>
+                            <Link to="/register">REGISTER</Link>
+                        </button> 
                     </div>
                 </div>
             </div>
@@ -62,7 +41,3 @@ export default function LandingPage() {
         </div>    
     );
 }
-
-
-
-

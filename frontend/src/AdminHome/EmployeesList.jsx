@@ -27,12 +27,12 @@ export default function EmployeesList() {
     if (employees) {
         return (
             <ul>
-            {employees.map((employee) => 
-                <li key={employee.person_id}>
-                    <EmployeeCard employee={employee} setError={setError} loadUsers={loadUsers}/>
-                </li>
-            )}
-        </ul>
+                {employees.map((employee) => 
+                    <li key={employee.person_id}>
+                        <EmployeeCard employee={employee} setError={setError} loadUsers={loadUsers}/>
+                    </li>
+                )}
+            </ul>
         )
     } else {
         return <Spinner />

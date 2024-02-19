@@ -12,6 +12,7 @@ import CreateAdminAccount from "./CreateAccount/CreateAdminAccount";
 import UserRegisterForm from "./CreateAccount/UserRegisterForm";
 // import TipsPage from "./Tips/TipsPage";
 
+import UserPastReports from "./UserPastReports/UserPastReports";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/user/:userId/log" element={<UserActivityLog />} />
         <Route path="/user/registerForm" element={<UserRegisterForm />} />
         {/* <Route path="/tips/options" element={<TipsPage />} /> */}
+        <Route path="/user/:userId/history" element={<UserPastReports />} />
       </Routes>
     </BrowserRouter>
   )
