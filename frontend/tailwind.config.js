@@ -23,7 +23,6 @@ module.exports = {
           3: '#F0F0F0',
           background: '#E2EFF2'
         },
-
       },
     },
   },

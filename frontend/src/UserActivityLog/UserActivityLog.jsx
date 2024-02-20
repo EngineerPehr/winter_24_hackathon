@@ -7,7 +7,7 @@ import { createEntry } from "../utils/api";
 
 export default function UserActivityLog() {
     const { userId } = useParams()
-    const [error, setError] = useState(null)
+
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
@@ -34,15 +34,18 @@ export default function UserActivityLog() {
     const suggestions = [
         {
             title: "Sleep Disorders Guide",
-            tip: "Explore educational resources for common sleep disorders. Including self help modules or be connected with a sleep specialist. Establish your own sleep routine."
+            tip: "Explore educational resources for common sleep disorders. Including self help modules or be connected with a sleep specialist. Establish your own sleep routine.",
+            link: "/tips/sleep"
         },
         {
             title: "Physical Fitness Guide",
-            tip: "Navigate a variety of workout plans, engaging activities, or find local trails. Learn the importance of physical activity for your personal better mental well-being."
+            tip: "Navigate a variety of workout plans, engaging activities, or find local trails. Learn the importance of physical activity for your personal better mental well-being.",
+            link: "/tips/fitness"
         },
         {
             title: "Meditation & Relaxation Guide",
-            tip: "Learn meditation and deep relaxation techniques to better your sleep quality and lower your daily stress levels. Personalized mood tracking to discover your stress triggers."
+            tip: "Learn meditation and deep relaxation techniques to better your sleep quality and lower your daily stress levels. Personalized mood tracking to discover your stress triggers.",
+            link: "/tips/meditation"
         },
         {
             title: "Link Audio Books",
@@ -77,7 +80,7 @@ export default function UserActivityLog() {
         try {
             await createEntry(entry, abortController.signal)
         } catch (er) {
-            setError(er)
+            console.error(er)
         } finally {
             abortController.abort()
             navigate(`/user/${userId}/home`);
