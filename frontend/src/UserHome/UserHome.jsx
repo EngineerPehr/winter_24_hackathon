@@ -1,39 +1,46 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DropDownMenuButton from "../utils/DropDownMenuButton";
 import ProgressBar from "../utils/ProgressBar";
 
-/*
-Just for reference until we get the api hooked up
-    const user = {
-        "person_id": 374,
-        "gender": "Female",
-        "age": 59,
-        "occupation": "Nurse",
-        "sleep_duration": "8.1",
-        "quality_of_sleep": 9,
-        "physical_activity_level": 75,
-        "stress_level": 3,
-        "bmi_category": "Overweight",
-        "blood_pressure": "140/95",
-        "heart_rate": 68,
-        "daily_steps": 7000,
-        "sleep_disorder": "Sleep Apnea"
-    }
-*/
 
 export default function UserHome() {
+    const { userId } = useParams()
+    // Options to pass down to <DropDownMenuButton/>
+    const menuOptions = [
+        {
+            option: "Dashboard",
+            route: `/user/${userId}/home`,
+        },
+        {
+            option: "Report History",
+            route: `/user/${userId}/history`,
+        },
+        {
+            option: "Log Activity",
+            route: `/user/${userId}/log`,
+        },
+        {
+            option: "Settings",
+            route: ``,
+        },
+        {
+            option: "Privacy Policy",
+            route: ``,
+        },
+    ]
+
     return (
         <div className="columns-2">
             <div className="break-after-column m-6">
                 <div className="pt-2">
-                    <h2 className="text-3xl font-bold">Welcome Anonymous369</h2>
+                    <h1 className="text-3xl font-bold">Welcome Anonymous369</h1>
                     <hr className="h-px border-0" style={{ backgroundColor: "#000000"}} />
                     <p className="my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 </div>
                 <div className="flex flex-col pb-5">
-                    <button className="w-5/12 button-white-rounded my-2"><Link>LOG ACTIVITY</Link></button>
-                    <button className="w-5/12 button-dark-rounded my-2"><Link>PAST REPORTS</Link></button>
+                    <Link to={`/user/${userId}/log`} className="w-5/12 button-white-rounded my-2" reloadDocument>LOG ACTIVITY</Link>
+                    <Link to={`/user/${userId}/history`} className="w-5/12 button-dark-rounded my-2" reloadDocument>PAST REPORTS</Link>
                 </div>
                 <div className="mt-5">
                     <h2 className="text-2xl">Recommended Goals</h2>
@@ -50,33 +57,33 @@ export default function UserHome() {
                 <div className="flex relative justify-center px-3 pt-3">
                 <h2 className="text-2xl">Last Month Metrics</h2>
                     <div className="absolute right-5 mt-1.5">
-                        <DropDownMenuButton options={["Profile", "Report History", "Additional Resources", "Settings", "Privacy Policy"]} />
+                        <DropDownMenuButton options={menuOptions} />
                     </div>
                 </div>
                 <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
                 <div className="mt-3 p-3">
                     <div className="border-2 border-black p-1 pb-4 my-2">
-                        <h3 className="text-xl">Sleep Duration</h3>
+                        <h2 className="text-xl">Sleep Duration</h2>
                         <p>Your Average: # value</p>
                         <ProgressBar completed={false} progress={75} />
                     </div>
                     <div className="border-2 border-black p-1 pb-4 my-2">
-                        <h3 className="text-xl">BMI</h3>
+                        <h2 className="text-xl">BMI</h2>
                         <p>Your Average: # value</p>
                         <ProgressBar completed={false} progress={70} />
                     </div>
                     <div className="border-2 border-black p-1 pb-4 my-2">
-                        <h3 className="text-xl">Heart Rate</h3>
+                        <h2 className="text-xl">Heart Rate</h2>
                         <p>Your Average: # value</p>
                         <ProgressBar completed={false} progress={90} />
                     </div>
                     <div className="border-2 border-black p-1 pb-4 my-2">
-                        <h3 className="text-xl">Steps Per Day</h3>
+                        <h2 className="text-xl">Steps Per Day</h2>
                         <p>Your Average: # value</p>
                         <ProgressBar completed={false} progress={75} />
                     </div>
                     <div className="border-2 border-black p-1 pb-4 mt-2">
-                        <h3 className="text-xl">Blood Pressure</h3>
+                        <h2 className="text-xl">Blood Pressure</h2>
                         <p>Your Average: # value</p>
                         <ProgressBar completed={false} progress={85} />
                     </div>

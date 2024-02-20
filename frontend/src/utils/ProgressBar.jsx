@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function ProgressBar({ completed, progress }) {
 
+    // Pretty self explanatory, the bar is as long as the value passed down
     const completedBarStyle = {
         width: `${completed}%`,
     }

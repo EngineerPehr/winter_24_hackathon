@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { employees } from "../utils/api";
 import EmployeesList from "./EmployeesList"
 import graph from "./graph.jpg"
 import ProgressBar from "../utils/ProgressBar";
 import DropDownMenuButton from "../utils/DropDownMenuButton";
+
 
 
 export default function AdminHome() {
@@ -16,9 +16,33 @@ export default function AdminHome() {
         tasksGoal: 128,
         companyMood: "Decent"
     }
-
+    // Options to pass down to <DropDownMenuButton/>
+    const menuOptions = [
+        {
+            option: "Profile",
+            route: "",
+        },
+        {
+            option: "Report History",
+            route: "",
+        },
+        {
+            option: "Settings",
+            route: "",
+        },
+        {
+            option: "Full List of Employees",
+            route: "",
+        },
+        {
+            option: "IT Help Desk",
+            route: "",
+        },
+    ]
+    // Calculate percent progress towards a goal
     const sleepHoursProgress = (goals.sleepHoursThisMonth / goals.sleepHoursGoal) * 100
     const tasksProgress = (goals.tasksMet / goals.tasksGoal) * 100
+
 
     return (
         <div className="columns-2">
@@ -35,7 +59,10 @@ export default function AdminHome() {
                     </div>
                     <p>Total {goals.sleepHoursThisMonth.toLocaleString()} out of {goals.sleepHoursGoal.toLocaleString()} hours of sleep.</p>
                     <p className="mt-1">Check out ways to improve your company numbers</p>
-                    <button className="button-white-rounded mt-1 w-5/12 border-4"><Link to="">See Report</Link></button>
+
+                    <div className="mt-3">
+                        <Link className="button-white-rounded border-4 px-10">See Report</Link>
+                    </div>
                 </div>
                 <div className="my-3">
                     <h2 className="text-2xl">Monthly Client Tasks Met</h2>
@@ -49,15 +76,15 @@ export default function AdminHome() {
                 <div className="flex relative justify-center px-3 py-1">
                     <h2 className="text-2xl">Your Employees</h2>
                     <div className="absolute right-5 mt-2">
-                        <DropDownMenuButton options={["Menu", "Profile", "Report History", "Full List of Employees", "IT Help Desk"]} />
+                        <DropDownMenuButton options={menuOptions} />
                     </div>
                 </div>
                 <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
-                <div className="px-3">
-                    <button className="button-white-rounded my-7 w-full ml-auto"><Link to="">Register A New Employee</Link></button>
+                <div className="flex justify-center px-3">
+                    <Link to="/register" className="button-white-rounded my-6 w-full ml-auto">Register A New Employee</Link>
                 </div>
                 <div className="overflow-y-auto h-96">
-                    <EmployeesList employees={employees}/>
+                    <EmployeesList />
                 </div>
             </div>
         </div>

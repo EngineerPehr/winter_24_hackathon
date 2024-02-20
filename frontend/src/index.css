@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+h1, h2, h3, h4, h5, h6, p {
+  @apply font-arial
+}
+
 .progress-container {
   position: relative;
   height: 15px;
@@ -32,16 +36,18 @@
   .button-white-rounded {
     @apply 
       text-black
+      text-center
+      text-xl
+      font-medium
+      font-arial
       bg-white
       border-2
       border-black
+      rounded-xl
       focus:outline-none
       hover:bg-gray-100
       focus:ring-4
       focus:ring-gray-100
-      font-medium
-      rounded-xl
-      text-xl
       px-5
       py-1
       me-2
@@ -51,16 +57,19 @@
   .button-dark-rounded {
     @apply
     text-white
+    text-center
+    text-xl
+    font-bold
+    font-arial
     bg-gray-800
     hover:bg-gray-900
     focus:outline-none
     focus:ring-4
     focus:ring-gray-300
-    font-medium
     rounded-xl
-    text-xl
-    px-5
-    py-2
+    pt-1.5
+    pb-1.5
+    py-1
     me-2
     mb-2
 
