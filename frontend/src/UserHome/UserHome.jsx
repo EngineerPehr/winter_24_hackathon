@@ -53,7 +53,7 @@ export default function UserHome() {
                     </div>
                 </div>
             </div>
-            <div className="bg-gray-300 m-6">
+            <div className="bg-accent-background border-accent-1 border-2 rounded-md m-6">
                 <div className="flex relative justify-center px-3 pt-3">
                 <h2 className="text-2xl">Last Month Metrics</h2>
                     <div className="absolute right-5 mt-1.5">

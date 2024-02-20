@@ -61,7 +61,7 @@ export default function AdminHome() {
                     <p className="mt-1">Check out ways to improve your company numbers</p>
 
                     <div className="mt-3">
-                        <Link className="button-white-rounded border-4 px-10">See Report</Link>
+                        <Link className="button-dark-rounded px-10">See Report</Link>
                     </div>
                 </div>
                 <div className="my-3">
@@ -72,7 +72,7 @@ export default function AdminHome() {
                     <p>Successfully completed {goals.tasksMet} of {goals.tasksGoal} targeted tasks.</p>
                 </div>
             </div>
-            <div className="bg-gray-300 m-6 pb-3">
+            <div className="bg-accent-background border-accent-1 border-2 rounded-md m-6">
                 <div className="flex relative justify-center px-3 py-1">
                     <h2 className="text-2xl">Your Employees</h2>
                     <div className="absolute right-5 mt-2">
@@ -81,7 +81,7 @@ export default function AdminHome() {
                 </div>
                 <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
                 <div className="flex justify-center px-3">
-                    <Link to="/register" className="button-white-rounded my-6 w-full ml-auto">Register A New Employee</Link>
+                    <Link to="/register" className="button-dark-rounded my-6 w-full ml-auto">Register A New Employee</Link>
                 </div>
                 <div className="overflow-y-auto h-96">
                     <EmployeesList />
