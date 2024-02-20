@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function ActivityLogForm({ entry, handleChange, handleSubmit }) {
 
     return (
-        <div className="text-xl">
+        <div className="text-2xl text-primary-1">
             <form onSubmit={handleSubmit}>
                 <div className="flex justify-between my-1 h-9">
                     <label htmlFor="sleep_duration">Sleep Duration &#40;Hours&#41; *</label>
@@ -70,9 +70,12 @@ export default function ActivityLogForm({ entry, handleChange, handleSubmit }) {
                         className="border-2 rounded-md w-1/2"
                     />
                 </div>
-                <div className="flex justify-between">
+                <div className="my-3 text-lg">
                     <small>* Required Entry</small>
-                    <button type="submit" className="button-dark-rounded bg-slate-600 hover:bg-slate-700 px-10">Submit</button>
+                </div>
+                <div className="flex flex-row gap-2 my-2">
+                    <button type="submit" className="button-white-rounded font-bold mt-3 w-1/2">SUBMIT</button>
+                    <div className="w-1/2"></div>
                 </div>
             </form>
         </div>

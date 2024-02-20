@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "../utils/Footer";
 import "../index.css";
 
 export default function LandingPage() {
@@ -59,7 +58,7 @@ resilience.</p><br/>
 
             {/* Footer section */}
             <div>
-                <Footer />
+                
             </div>
         </div>    
     );
