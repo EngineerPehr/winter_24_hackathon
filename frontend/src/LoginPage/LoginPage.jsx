@@ -89,9 +89,7 @@ export default function LoginPage() {
                         </div>
                         <div className="flex flex-col items-center justify-center mt-6 mb-20">
                             <p>Forget your password?</p>
-                            <a href="#" className="underline">
-                                Reset Password
-                            </a>
+                            <a href="#" className="underline hover:text-blue-500">Reset Password</a>
                         </div>
                         {/* Sign in button */}
                         <div className="flex flex-col items-center justify-center">
