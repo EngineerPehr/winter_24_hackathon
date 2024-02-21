@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 // import { Link, useNavigate } from "react-router-dom";
 
 export default function CreateAdminAccount() {
     let admin
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value)
@@ -21,7 +21,7 @@ export default function CreateAdminAccount() {
     return (
         <div className="flex flex-col items-center justify-center">
             <h1 className="mt-8 text-3xl font-bold">
-                You're On the Journey to Better Mental Health
+                You"re On the Journey to Better Mental Health
             </h1>
             <div
                 className="mt-5 mb-2 block w-1/2 rounded border-2 border-black px-6 pb-[6px] pt-2 text-s font-medium leading-normal text-primary"
@@ -104,10 +104,10 @@ export default function CreateAdminAccount() {
 // import Footer from "../utils/Footer";
 
 // export default function LoginPage() {
-//     const [userFullname, setUserFullname] = useState('');
-//     const [username, setUsername] = useState('');
-//     const [sleepDisorder, setSleepDisorder] = useState('');
-//     const [occupation, setOccupation] = useState('');
+//     const [userFullname, setUserFullname] = useState("");
+//     const [username, setUsername] = useState("");
+//     const [sleepDisorder, setSleepDisorder] = useState("");
+//     const [occupation, setOccupation] = useState("");
 
 //     const handleUserFullnameChange = (e) => {
 //         setUserFullname(e.target.value);
@@ -131,7 +131,7 @@ export default function CreateAdminAccount() {
 
 //     return (
 //         <div className="flex flex-col items-center justify-center">
-//             <h1 className="mt-8 text-3xl font-bold">You're On the Journey to Better Mental Health</h1>
+//             <h1 className="mt-8 text-3xl font-bold">You"re On the Journey to Better Mental Health</h1>
 //             <div className="mt-5 mb-2 block w-1/2 rounded border-2 border-black px-6 pb-[6px] pt-2 text-s font-medium leading-normal text-primary"
 //                 data-te-ripple-init>
 //                 <form onSubmit={handleSubmit}>

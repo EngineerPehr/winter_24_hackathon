@@ -1,12 +1,12 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    'node_modules/flowbite-react/lib/esm/**/*.js'
+    "node_modules/flowbite-react/lib/esm/**/*.js"
   ],
   theme: {
     fontFamily: {
-      'arial': ["Arial", "ui-sans-serif", "ui-serif", "system-ui"]
+      "arial": ["Arial", "ui-sans-serif", "ui-serif", "system-ui"]
     },
     extend: {
       colors: {
@@ -27,7 +27,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('flowbite/plugin')
+    require("flowbite/plugin")
   ],
 }
 

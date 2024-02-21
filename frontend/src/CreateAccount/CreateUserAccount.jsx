@@ -1,3 +1,4 @@
+
 import React, { useCallback, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { createUser } from '../utils/api'
@@ -9,6 +10,7 @@ export default function CreateUserAccount() {
     })
     const [fullname, setFullName] = useState('')
     const [password, setPassword] = useState('')
+
 
     const navigate = useNavigate()
 
@@ -62,7 +64,7 @@ export default function CreateUserAccount() {
     return (
         <div className="flex flex-col items-center justify-center">
             <h1 className="mt-8 text-3xl font-bold">
-                You're On the Journey to Better Mental Health
+                You"re On the Journey to Better Mental Health
             </h1>
             <div
                 className="mt-5 mb-2 block w-1/2 rounded border-2 border-black px-6 pb-[6px] pt-2 text-s font-medium leading-normal text-primary"
