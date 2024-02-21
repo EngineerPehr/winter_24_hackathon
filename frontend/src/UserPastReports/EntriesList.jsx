@@ -26,7 +26,7 @@ export default function EntriesList({ listOrder }) {
 
     useEffect(() => setEntries(entries.toReversed()), [listOrder])
 
-    if (entries.length) {
+    if (entries) {
         return (
             <>
             <ul>
@@ -39,6 +39,8 @@ export default function EntriesList({ listOrder }) {
             </>
         )
     } else {
-        return <h3 className="text-center mt-8 text-3xl font-bold bg-primary-2 border-2 border-accent-2 rounded-sm">No Entries Yet</h3>
+        return <h3 className="text-center mt-8 text-3xl font-bold bg-primary-2 border-2 border-accent-2 rounded-sm mx-3">
+            No Entries Yet
+            </h3>
     }
 }

@@ -33,25 +33,31 @@ function validateDate (value) {
 
 function validateInput (req, res, next) {
     const validationRules = {
+        /*
         username: { type: 'string', maxLength: 50 },
         admin: { type: 'boolean' },
         gender: { type: 'string', enum: ['Male', 'Female'] },
         age: { type: 'number', min: 0, max: 200 },
+        */
         sleep_duration: { type: 'number', min: 0, max: 24 },
-        quality_of_sleep: { type: 'number', min: 1, max: 10 },
-        physical_activity_level: { type: 'number', min: 0, max: 1440 },
+        //quality_of_sleep: { type: 'number', min: 1, max: 10 },
+        //physical_activity_level: { type: 'number', min: 0, max: 1440 },
         stress_level: { type: 'number', min: 1, max: 10 },
+        /*
         bmi_category: {
             type: 'string',
             enum: ['Underweight', 'Normal', 'Overweight'],
         },
-        blood_pressure: { type: 'string' },
+        */
+        //blood_pressure: { type: 'string' },
         heart_rate: { type: 'number', min: 20, max: 600 },
         daily_steps: { type: 'number', min: 0, max: 100000 },
+        /*
         sleep_disorder: {
             type: 'string',
             enum: ['None', 'Insomnia', 'Sleep Apnea'],
         },
+        */
         date: { type: 'string', custom: validateDate },
     }
 
@@ -65,6 +71,7 @@ function validateInput (req, res, next) {
             max,
             custom,
         } = validationRules[field]
+        
 
         if (
             !validateField(value, type, { maxLength, min, max }) ||

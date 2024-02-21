@@ -76,7 +76,7 @@ export default function UserActivityLog() {
         e.preventDefault();
 
         const abortController = new AbortController()
-
+        console.log(entry)
         try {
             await createEntry(entry, abortController.signal)
         } catch (er) {
