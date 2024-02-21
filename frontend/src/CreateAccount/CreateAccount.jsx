@@ -1,10 +1,13 @@
+
 import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createUser } from '../utils/api'
 
+
 export default function CreateAccount() {
-    const [userType, setUserType] = useState('')
+    const [userType, setUserType] = useState("")
     const navigate = useNavigate() // Initialize useHistory hook
+
     const [user, setUser] = useState({
         username: '',
         admin: true,
@@ -137,7 +140,6 @@ export default function CreateAccount() {
                             </button>
                         </div>
                         <p>
-                            Or,{' '}
                             <a href="/login" className="underline">
                                 Sign In
                             </a>
