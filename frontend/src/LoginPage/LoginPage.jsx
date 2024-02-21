@@ -21,8 +21,6 @@ export default function LoginPage() {
         e.preventDefault()
         const abortController = new AbortController()
 
-        let userId = 1
-
         try {
             const responseFromApi = await readUserByUsername(
                 username,

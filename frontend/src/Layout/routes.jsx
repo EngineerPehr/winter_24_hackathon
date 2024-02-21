@@ -16,7 +16,7 @@ export default function RoutesComponent() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<LandingPage />} />
+                <Route path="/" element={<LandingPage />} exact />
                 <Route path="/admin/home" element={<AdminHome />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<CreateAccount />} />
