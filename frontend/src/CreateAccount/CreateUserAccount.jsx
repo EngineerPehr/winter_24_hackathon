@@ -1,26 +1,62 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { createUser } from '../utils/api'
 
 export default function CreateUserAccount() {
-    let user
-    const [userFullname, setUserFullname] = useState('')
-    const [username, setUsername] = useState('')
+    const [user, setUser] = useState({
+        username: '',
+        admin: false,
+    })
+    const [fullname, setFullName] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleUserFullnameChange = (e) => {
-        setUserFullname(e.target.value)
+    const navigate = useNavigate()
+
+    function handleChange({ target: { name, value } }) {
+        if (name === 'fullname') {
+            setFullName(value)
+        } else if (name === 'password') {
+            setPassword(value)
+        } else {
+            setUser((previousUser) => ({
+                ...previousUser,
+                [name]: value,
+            }))
+        }
     }
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value)
-    }
+    const submitUser = useCallback(
+        async (user) => {
+            const abortController = new AbortController()
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
+            try {
+                const response = await createUser(user, abortController.signal)
+                return response
+            } catch (error) {
+                console.error(error)
+                throw error
+            } finally {
+                abortController.abort()
+            }
+        },
+        [user]
+    )
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+
+        try {
+            const response = await submitUser(user)
+
+            // Assuming submitUser has updated user data, check user.admin as a boolean
+            if (response && response.admin) {
+                navigate('/admin/home')
+            } else {
+                navigate(`/user/${response.person_id}/home`)
+            }
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
@@ -43,9 +79,10 @@ export default function CreateUserAccount() {
                             <input
                                 type="string"
                                 id="fullname"
-                                value={userFullname}
+                                name="fullname"
+                                value={fullname}
                                 placeholder="First and Last Name"
-                                onChange={handleUserFullnameChange}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Username input */}
@@ -57,9 +94,10 @@ export default function CreateUserAccount() {
                             <input
                                 type="string"
                                 id="username"
-                                value={username}
+                                name="username"
+                                value={user.username}
                                 placeholder="Enter Username"
-                                onChange={handleUsernameChange}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Password input */}
@@ -69,24 +107,12 @@ export default function CreateUserAccount() {
                         >
                             <label htmlFor="password"></label>
                             <input
-                                type="string"
+                                type="password"
                                 id="password"
+                                name="password"
                                 value={password}
                                 placeholder="Password"
-                                onChange={handlePasswordChange}
-                            />
-                        </div>
-                        <div
-                            class="relative mb-6 py-2 px-2 w-full rounded border-2"
-                            data-te-input-wrapper-init
-                        >
-                            <label htmlFor="password"></label>
-                            <input
-                                type="string"
-                                id="password"
-                                value={password}
-                                placeholder="Confirm Password"
-                                onChange={handlePasswordChange}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Continue button */}
@@ -95,7 +121,8 @@ export default function CreateUserAccount() {
                                 type="submit"
                                 className="button-dark-rounded w-full mx-20"
                             >
-                                <a href="/user/registerForm">CONTINUE</a>
+                                {/* <a href="/user/registerForm"></a> */}
+                                CONTINUE
                             </button>
                         </div>
                     </div>

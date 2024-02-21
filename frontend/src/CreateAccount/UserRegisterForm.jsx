@@ -83,7 +83,7 @@ export default function RegisterForm() {
                                     type="string"
                                     id="height"
                                     name="height"
-                                    value={formData.age}
+                                    value={formData.height}
                                     placeholder="Height (feet)"
                                     onChange={handleInputChange}
                                     min="3"
@@ -101,7 +101,7 @@ export default function RegisterForm() {
                                     type="string"
                                     id="weight"
                                     name="weight"
-                                    value={formData.age}
+                                    value={formData.weight}
                                     placeholder="Weight (lb)"
                                     onChange={handleInputChange}
                                     min="50"
@@ -138,8 +138,10 @@ export default function RegisterForm() {
                             <input
                                 type="string"
                                 id="occupation"
+                                name="occupation"
                                 value={formData.occupation}
                                 placeholder="Occupation"
+                                onChange={handleInputChange}
                             />
                         </div>
                         <button

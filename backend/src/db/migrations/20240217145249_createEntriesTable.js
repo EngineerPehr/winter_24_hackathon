@@ -5,11 +5,12 @@
 exports.up = function (knex) {
     return knex.schema.createTable('entries', function (table) {
         table.increments('entry_id').primary()
-        table.integer('person_id')
+        table.integer('person_id').unsigned
         table
             .foreign('person_id')
             .references('person_id')
             .inTable('health_data')
+            .onDelete('CASCADE')
         table.date('date')
         table.decimal('sleep_duration')
         table.integer('quality_of_sleep')
