@@ -2,55 +2,26 @@
 
 import React from 'react'
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa' // Import the icons
-import image from './logo.jpg'
+import logo from './wwlogo_notext.png'
 
 export default function Footer() {
     return (
         <footer className="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
-            <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-center">
+            <div className="flex items-center justify-center border-neutral-200 dark:border-neutral-500 lg:justify-center">
                 <div className="flex justify-between py-10">
                     {/* first half section */}
                     {/* social network */}
                     <div className="me-1 w-full">
-                        <img src={image} alt="Logo" className="w-8 h-8" />
+                        <img src={logo} alt="Logo" className="w-20 h-20" />
                         <p className="mb-5">
                             Where your mental health comes first.
                         </p>
-                        <p className="mb-2">
-                            Connect with us on our other platforms
-                        </p>
-                        <div className="flex space-x-4">
-                            <a
-                                href="https://linkedin.com"
-                                className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
-                            >
-                                <FaLinkedin />
-                            </a>
-                            <a
-                                href="https://instagram.com"
-                                className="text-neutral-600 dark:text-neutral-200 hover:text-purple-500 dark:hover:text-purple-400"
-                            >
-                                <FaInstagram />
-                            </a>
-                            <a
-                                href="https://twitter.com"
-                                className="text-neutral-600 dark:text-neutral-200 hover:text-blue-400 dark:hover:text-blue-300"
-                            >
-                                <FaTwitter />
-                            </a>
-                            <a
-                                href="https://facebook.com"
-                                className="text-neutral-600 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-500"
-                            >
-                                <FaFacebook />
-                            </a>
-                        </div>
                     </div>
 
                     {/* second half section */}
                     <div className="w-pull md:w-1/2 lg:w-2/3 xl:w-3/4 ml-20 px-10"></div>
                     {/* Company */}
-                    <div className="col-span-1 mr-10 w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
+                    <div className="col-span-1 flex flex-col justify-center mr-10 w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
                         <h5 className="font-bold">Company</h5>
                         <p>
                             <a
@@ -86,7 +57,7 @@ export default function Footer() {
                         </p>
                     </div>
                     {/* Support */}
-                    <div className="col-span-1 mx-10 w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
+                    <div className="col-span-1 flex flex-col justify-center mx-10 w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
                         <h5 className="font-bold">Support</h5>
                         <p>
                             <a
@@ -122,7 +93,7 @@ export default function Footer() {
                         </p>
                     </div>
                     {/* Contact */}
-                    <div className="col-span-1 mx-10">
+                    <div className="col-span-1 flex flex-col justify-center mx-10">
                         <h5 className="font-bold">Contact Us</h5>
                         <div className="flex items-center">
                             <svg
@@ -192,7 +163,35 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-
+            <div className="border-b-2 flex flex-col justify-center items-center mb-5 ">
+                <p className="mb-2">Connect with us on our other platforms</p>
+                <div className="flex space-x-4 mb-2">
+                    <a
+                        href="https://linkedin.com"
+                        className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
+                    >
+                        <FaLinkedin />
+                    </a>
+                    <a
+                        href="https://instagram.com"
+                        className="text-neutral-600 dark:text-neutral-200 hover:text-purple-500 dark:hover:text-purple-400"
+                    >
+                        <FaInstagram />
+                    </a>
+                    <a
+                        href="https://twitter.com"
+                        className="text-neutral-600 dark:text-neutral-200 hover:text-blue-400 dark:hover:text-blue-300"
+                    >
+                        <FaTwitter />
+                    </a>
+                    <a
+                        href="https://facebook.com"
+                        className="text-neutral-600 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-500"
+                    >
+                        <FaFacebook />
+                    </a>
+                </div>
+            </div>
             {/* copyright section */}
             <div className="flex items-center justify-between mx-12 py-3 text-center md:text-left">
                 <div>Copyright &copy; 2024</div>
