@@ -63,16 +63,16 @@ export default function Footer() {
                     {/* Support */}
                     <div className="col-span-1 flex flex-col justify-center mx-10 w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
                         <h5 className="font-bold">Support</h5>
-                        <p className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400">
+                        <p className="text-neutral-600 dark:text-neutral-200">
                             Help center
                         </p>
-                        <p className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400">
+                        <p className="text-neutral-600 dark:text-neutral-200">
                             Getting started
                         </p>
-                        <p className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400">
+                        <p className="text-neutral-600 dark:text-neutral-200">
                             Report a bug
                         </p>
-                        <p className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400">
+                        <p className="text-neutral-600 dark:text-neutral-200">
                             Chat support
                         </p>
                     </div>
