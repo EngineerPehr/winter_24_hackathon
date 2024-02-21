@@ -68,7 +68,7 @@ export default function UserActivityLog() {
         }))
     }
 
-    // Creates a new entry with today's date
+    // Creates a new entry with today"s date
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -88,7 +88,7 @@ export default function UserActivityLog() {
         <div className="columns-2">
             <div className="break-after-column m-6">
                 <div className="">
-                    <h2 className="text-3xl font-bold">Today's Activity</h2>
+                    <h2 className="text-3xl font-bold">Today"s Activity</h2>
                 </div>
                 <div className="mt-6">
                     <ActivityLogForm entry={entry} handleChange={handleChange} handleSubmit={handleSubmit}/>

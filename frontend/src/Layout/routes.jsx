@@ -1,16 +1,18 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import LandingPage from '../LandingPage/LandingPage'
-import AdminHome from '../AdminHome/AdminHome'
-import LoginPage from '../LoginPage/LoginPage'
-import CreateAccount from '../CreateAccount/CreateAccount'
-import UserHome from '../UserHome/UserHome'
-import Footer from '../Footer/Footer'
-import UserActivityLog from '../UserActivityLog/UserActivityLog'
-import CreateUserAccount from '../CreateAccount/CreateUserAccount'
-import CreateAdminAccount from '../CreateAccount/CreateAdminAccount'
-import UserRegisterForm from '../CreateAccount/UserRegisterForm'
-import UserPastReports from '../UserPastReports/UserPastReports'
+import React from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import LandingPage from "../LandingPage/LandingPage"
+import AdminHome from "../AdminHome/AdminHome"
+import LoginPage from "../LoginPage/LoginPage"
+import CreateAccount from "../CreateAccount/CreateAccount"
+import UserHome from "../UserHome/UserHome"
+import Footer from "../Footer/Footer"
+import UserActivityLog from "../UserActivityLog/UserActivityLog"
+import CreateUserAccount from "../CreateAccount/CreateUserAccount"
+import CreateAdminAccount from "../CreateAccount/CreateAdminAccount"
+import UserRegisterForm from "../CreateAccount/UserRegisterForm"
+import UserPastReports from "../UserPastReports/UserPastReports"
+import TipsPage from "../Tips/TipsPage"
+// import ImagePage from "../Tips/ImagePage"
 
 export default function RoutesComponent() {
     return (
@@ -25,15 +27,10 @@ export default function RoutesComponent() {
                 <Route path="/user/account" element={<CreateUserAccount />} />
                 <Route path="/admin/account" element={<CreateAdminAccount />} />
                 <Route path="/user/:userId/log" element={<UserActivityLog />} />
-                <Route
-                    path="/user/registerForm"
-                    element={<UserRegisterForm />}
-                />
-                {/* <Route path="/tips/options" element={<TipsPage />} /> */}
-                <Route
-                    path="/user/:userId/history"
-                    element={<UserPastReports />}
-                />
+                <Route path="/user/registerForm" element={<UserRegisterForm />}/>
+                <Route path="/tips/options" element={<TipsPage />} />
+                {/* <Route path="/tips/images" element={<ImagePage />} /> */}
+                <Route path="/user/:userId/history" element={<UserPastReports />} />
             </Routes>
         </BrowserRouter>
     )

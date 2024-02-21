@@ -1,17 +1,17 @@
-const asyncErrorBoundary = require('../errors/asyncErrorBoundary')
-const service = require('./data.service')
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary")
+const service = require("./data.service")
 
-function validateField (value, type, criteria) {
+function validateField(value, type, criteria) {
     switch (type) {
-        case 'string':
+        case "string":
             return (
-                typeof value === 'string' && value.length <= criteria.maxLength
+                typeof value === "string" && value.length <= criteria.maxLength
             )
-        case 'boolean':
-            return typeof value === 'boolean'
-        case 'number':
+        case "boolean":
+            return typeof value === "boolean"
+        case "number":
             return (
-                typeof value === 'number' &&
+                typeof value === "number" &&
                 value >= criteria.min &&
                 value <= criteria.max
             )
@@ -20,30 +20,30 @@ function validateField (value, type, criteria) {
     }
 }
 
-function validateEnum (value, validValues) {
+function validateEnum(value, validValues) {
     return validValues.includes(value)
 }
 
-function validateInput (req, res, next) {
+function validateInput(req, res, next) {
     const validationRules = {
-        username: { type: 'string', maxLength: 50 },
-        admin: { type: 'boolean' },
-        gender: { type: 'string', enum: ['Male', 'Female'] },
-        age: { type: 'number', min: 0, max: 200 },
-        sleep_duration: { type: 'number', min: 0, max: 24 },
-        quality_of_sleep: { type: 'number', min: 1, max: 10 },
-        physical_activity_level: { type: 'number', min: 0, max: 1440 },
-        stress_level: { type: 'number', min: 1, max: 10 },
+        username: { type: "string", maxLength: 50 },
+        admin: { type: "boolean" },
+        gender: { type: "string", enum: ["Male", "Female"] },
+        age: { type: "number", min: 0, max: 200 },
+        sleep_duration: { type: "number", min: 0, max: 24 },
+        quality_of_sleep: { type: "number", min: 1, max: 10 },
+        physical_activity_level: { type: "number", min: 0, max: 1440 },
+        stress_level: { type: "number", min: 1, max: 10 },
         bmi_category: {
-            type: 'string',
-            enum: ['Underweight', 'Normal', 'Overweight'],
+            type: "string",
+            enum: ["Underweight", "Normal", "Overweight"],
         },
-        blood_pressure: { type: 'string' },
-        heart_rate: { type: 'number', min: 20, max: 600 },
-        daily_steps: { type: 'number', min: 0, max: 100000 },
+        blood_pressure: { type: "string" },
+        heart_rate: { type: "number", min: 20, max: 600 },
+        daily_steps: { type: "number", min: 0, max: 100000 },
         sleep_disorder: {
-            type: 'string',
-            enum: ['None', 'Insomnia', 'Sleep Apnea'],
+            type: "string",
+            enum: ["None", "Insomnia", "Sleep Apnea"],
         },
     }
 
@@ -70,14 +70,14 @@ function validateInput (req, res, next) {
     next()
 }
 
-async function healthDataExists (req, res, next) {
+async function healthDataExists(req, res, next) {
     const { personId } = req.params
     const data = await service.read(personId)
 
     if (!data) {
         return next({
             status: 404,
-            message: `Health data for Person ID '${personId}' does not exist`,
+            message: `Health data for Person ID "${personId}" does not exist`,
         })
     } else {
         res.locals.healthData = data
@@ -85,7 +85,7 @@ async function healthDataExists (req, res, next) {
     }
 }
 
-async function healthDataExists (req, res, next) {
+async function healthDataExists(req, res, next) {
     if (req.params.personId) {
         // For personId validation
         const { personId } = req.params
@@ -94,7 +94,7 @@ async function healthDataExists (req, res, next) {
         if (!data) {
             return next({
                 status: 404,
-                message: `Health data for Person ID '${personId}' does not exist`,
+                message: `Health data for Person ID "${personId}" does not exist`,
             })
         } else {
             res.locals.healthData = data
@@ -108,7 +108,7 @@ async function healthDataExists (req, res, next) {
         if (!userData) {
             return next({
                 status: 404,
-                message: `User with username '${username}' not found`,
+                message: `User with username "${username}" not found`,
             })
         } else {
             res.locals.healthData = userData
@@ -117,22 +117,22 @@ async function healthDataExists (req, res, next) {
     } else {
         return next({
             status: 400,
-            message: 'Invalid route. Missing parameter.',
+            message: "Invalid route. Missing parameter.",
         })
     }
 }
 
-async function list (req, res) {
+async function list(req, res) {
     try {
         const data = await service.list()
         res.json({ data })
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: 'Error accessing health data' })
+        res.status(500).json({ error: "Error accessing health data" })
     }
 }
 
-async function create (req, res, next) {
+async function create(req, res, next) {
     const requestHealthData = req.body.data
     const newHealthData = { ...requestHealthData }
 
@@ -141,41 +141,41 @@ async function create (req, res, next) {
         res.status(201).json({ data })
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: 'Error creating health data' })
+        res.status(500).json({ error: "Error creating health data" })
     }
 }
 
-function read (req, res, next) {
+function read(req, res, next) {
     try {
         const data = res.locals.healthData
         res.json({ data })
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: 'Error reading health data' })
+        res.status(500).json({ error: "Error reading health data" })
     }
 }
 
-async function update (req, res) {
+async function update(req, res) {
     try {
         const { person_id } = res.locals.healthData
         const updatedHealthData = { ...req.body.data, person_id }
-        // console.log('Updated Health Data:', updatedHealthData)
+        // console.log("Updated Health Data:", updatedHealthData)
         const result = await service.update(updatedHealthData)
         res.json({ data: result[0] })
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: 'Error updating health data' })
+        res.status(500).json({ error: "Error updating health data" })
     }
 }
 
-async function deleteHealthData (req, res, next) {
+async function deleteHealthData(req, res, next) {
     try {
         const { personId } = req.params
         await service.deleteHealthData(personId)
         res.sendStatus(204)
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: 'Error deleting health data' })
+        res.status(500).json({ error: "Error deleting health data" })
     }
 }
 

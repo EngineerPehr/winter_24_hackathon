@@ -1,6 +1,6 @@
 // Footer.jsx
 
-import React from 'react';
+import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"; // Import the icons
 import image from "./logo.jpg";
 
@@ -121,4 +121,4 @@ export default function Footer() {
 </div> (edited) 
 
 Tailwind has a "columns" utility which can do stuff like this to especially 
-when combined with the width utility "w-*" but I haven't completely figured it out */}
+when combined with the width utility "w-*" but I haven"t completely figured it out */}
