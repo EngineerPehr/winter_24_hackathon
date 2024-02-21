@@ -31,7 +31,7 @@ export default function UserHome() {
             route: ``,
         },
     ]
-    const [user, setUser] = useState()
+    const [user, setUser] = useState(null)
 
     // Fetches user from the API
     const loadUser = useCallback(async () => {

@@ -30,6 +30,7 @@ export default function LoginPage() {
             )
             const userId = responseFromApi.person_id
             const admin = responseFromApi.admin
+            console.log(userId)
             if (admin) {
                 navigate('/admin/home')
             } else {
@@ -102,7 +103,7 @@ export default function LoginPage() {
                         </div>
                         <p>
                             Or,{' '}
-                            <a href="./register" className="underline">
+                            <a href="/register" className="underline"> {/* fixed route from ./register */}
                                 Register
                             </a>
                         </p>
