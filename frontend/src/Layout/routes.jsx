@@ -16,6 +16,7 @@ import Careers from '../Boilerplate/Careers'
 import Contact from '../Boilerplate/Contact'
 import Terms from '../Boilerplate/Terms'
 import PrivacyPolicy from '../Boilerplate/Privacy'
+import AdminReport from '../AdminHome/AdminReport'
 // import ImagePage from "../Tips/ImagePage"
 
 export default function RoutesComponent() {
@@ -28,6 +29,7 @@ export default function RoutesComponent() {
             <Route path="/user/:userId/home" element={<UserHome />} />
             <Route path="/user/account" element={<CreateUserAccount />} />
             <Route path="/admin/account" element={<CreateAdminAccount />} />
+            <Route path="/admin/report" element={<AdminReport />} />
             <Route path="/user/:userId/log" element={<UserActivityLog />} />
             <Route path="/user/registerForm" element={<UserRegisterForm />} />
             <Route path="/tips/options" element={<TipsPage />} />
