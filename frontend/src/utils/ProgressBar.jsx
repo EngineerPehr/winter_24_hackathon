@@ -5,10 +5,12 @@ export default function ProgressBar({ completed, progress }) {
     // Pretty self explanatory, the bar is as long as the value passed down
     const completedBarStyle = {
         width: `${completed}%`,
+        borderRadius: completed === 100 ? '50%' : '25% 0 0 25%', // Circle when completed, rounded for progress
     }
 
     const progressBarStyle = {
         width: `${progress}%`,
+        borderRadius: '25% 0 0 25%', // Always rounded for progress
     }
 
     if (!completed) {

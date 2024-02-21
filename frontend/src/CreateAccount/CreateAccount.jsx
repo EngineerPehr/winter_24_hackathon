@@ -1,33 +1,72 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+
+import React, { useCallback, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { createUser } from '../utils/api'
+
 
 export default function CreateAccount() {
     const [userType, setUserType] = useState("")
     const navigate = useNavigate() // Initialize useHistory hook
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+
+    const [user, setUser] = useState({
+        username: '',
+        admin: true,
+    })
+    const [password, setPassword] = useState('')
 
     const handleUserTypeChange = (e) => {
         setUserType(e.target.value)
     }
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value)
+    function handleChange({ target: { name, value } }) {
+        if (name === 'dropdown') {
+            setUserType(value)
+            setUser((previousUser) => ({
+                ...previousUser,
+                admin: value,
+            }))
+        } else if (name === 'password') {
+            setPassword(value)
+        } else {
+            setUser((previousUser) => ({
+                ...previousUser,
+                [name]: value,
+            }))
+        }
     }
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
+    const submitUser = useCallback(
+        async (user) => {
+            const abortController = new AbortController()
 
-    const handleSubmit = (e) => {
+            try {
+                const response = await createUser(user, abortController.signal)
+                return response
+            } catch (error) {
+                console.error(error)
+                throw error
+            } finally {
+                abortController.abort()
+            }
+        },
+        [user]
+    )
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (userType === "admin") {
-            // If admin is selected, navigate to Create admin account page
-            navigate("/admin/account")
-        } else {
-            // Navigate to Create user account page
-            navigate("/user/account")
+        try {
+            const response = await submitUser(user)
+
+            if (userType === 'admin') {
+                // If admin is selected, navigate to Create admin account page
+                navigate('/admin/home')
+            } else {
+                // Navigate to Create user account page
+                navigate(`/user/${response.person_id}/home`)
+            }
+        } catch (error) {
+            console.error(error)
         }
     }
 
@@ -69,9 +108,10 @@ export default function CreateAccount() {
                             <input
                                 type="string"
                                 id="username"
-                                value={username}
+                                name="username"
+                                value={user.username}
                                 placeholder="Enter Username"
-                                onChange={handleUsernameChange}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Password input */}
@@ -81,26 +121,27 @@ export default function CreateAccount() {
                         >
                             <label htmlFor="password"></label>
                             <input
-                                type="string"
+                                type="password"
                                 id="password"
+                                name="password"
                                 value={password}
                                 placeholder="Password"
-                                onChange={handlePasswordChange}
+                                onChange={handleChange}
                             />
                         </div>
-                        <div
+                        {/* <div
                             class="relative mb-6 py-2 px-2 w-full rounded border-2"
                             data-te-input-wrapper-init
                         >
                             <label htmlFor="password"></label>
                             <input
-                                type="string"
+                                type="password"
                                 id="password"
                                 value={password}
                                 placeholder="Confirm Password"
                                 onChange={handlePasswordChange}
                             />
-                        </div>
+                        </div> */}
                         {/* Register button */}
                         <div className="flex flex-col items-center justify-center">
                             <button

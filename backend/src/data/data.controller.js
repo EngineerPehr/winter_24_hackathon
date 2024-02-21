@@ -58,12 +58,14 @@ function validateInput(req, res, next) {
             custom,
         } = validationRules[field]
 
-        if (
-            !validateField(value, type, { maxLength, min, max }) ||
-            (validValues && !validateEnum(value, validValues)) ||
-            (custom && !custom(value))
-        ) {
-            return res.status(400).json({ error: `Invalid ${field}` })
+        if (value !== null && value !== undefined) {
+            if (
+                !validateField(value, type, { maxLength, min, max }) ||
+                (validValues && !validateEnum(value, validValues)) ||
+                (custom && !custom(value))
+            ) {
+                return res.status(400).json({ error: `Invalid ${field}` })
+            }
         }
     }
 
@@ -141,7 +143,10 @@ async function create(req, res, next) {
         res.status(201).json({ data })
     } catch (error) {
         console.error(error)
-        res.status(500).json({ error: "Error creating health data" })
+      
+        console.error(error.stack)
+
+        res.status(500).json({ error: 'Error creating health data' })
     }
 }
 

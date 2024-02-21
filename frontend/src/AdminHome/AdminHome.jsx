@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import EmployeesList from "./EmployeesList"
 import graph from "./graph.jpg"
-import ProgressBar from "../utils/ProgressBar";
 import DropDownMenuButton from "../utils/DropDownMenuButton";
 
 
@@ -40,9 +39,9 @@ export default function AdminHome() {
         },
     ]
     // Calculate percent progress towards a goal
-    const sleepHoursProgress = (goals.sleepHoursThisMonth / goals.sleepHoursGoal) * 100
-    const tasksProgress = (goals.tasksMet / goals.tasksGoal) * 100
-
+    //const sleepHoursProgress = (goals.sleepHoursThisMonth / goals.sleepHoursGoal) * 100
+    //const tasksProgress = (goals.tasksMet / goals.tasksGoal) * 100
+    // if we ever get around to making a backend route for this
 
     return (
         <div className="columns-2">
@@ -52,27 +51,28 @@ export default function AdminHome() {
                     <h2 className="text-3xl my-3">Company Mood</h2>
                     <h3 className="text-2xl font-bold">{goals.companyMood}</h3>
                 </div>
-                <div className="my-3">
-                    <h2 className="text-2xl">Employee Sleep Quality Goals</h2>
-                    <div className="my-3">
-                        <ProgressBar completed={100} progress={Math.round(sleepHoursProgress)}/>
+                <div className="flex flex-row gap-3">
+                    <div className="border-2 border-black rounded-xl text-center py-4 my-3 w-1/2">
+                        <div className="mx-3 pb-2">
+                            <h2 className="text-xl font-bold">Employee Sleep Quality Goals</h2>
+                            <h3 className="text-primary-4 text-xl font-extrabold">55% Completion</h3>
+                            <p className="mt-3">Total {goals.sleepHoursThisMonth.toLocaleString()} out of {goals.sleepHoursGoal.toLocaleString()} hours of sleep.</p>
+                        </div>
                     </div>
-                    <p>Total {goals.sleepHoursThisMonth.toLocaleString()} out of {goals.sleepHoursGoal.toLocaleString()} hours of sleep.</p>
-                    <p className="mt-1">Check out ways to improve your company numbers</p>
-
-                    <div className="mt-3">
-                        <Link className="button-white-rounded border-4 px-10">See Report</Link>
+                    <div className="border-2 border-black rounded-xl text-center py-4 my-3 w-1/2">
+                        <div className="mx-3 pb-2">
+                            <h2 className="text-xl font-bold">Monthly Client Tasks Met</h2>
+                            <h3 className="text-primary-4 text-xl font-extrabold mt-7">63% Completion</h3>
+                            <p className="mt-3">Successfully completed {goals.tasksMet} of {goals.tasksGoal} targeted tasks.</p>
+                        </div>
                     </div>
                 </div>
-                <div className="my-3">
-                    <h2 className="text-2xl">Monthly Client Tasks Met</h2>
-                    <div className="my-3">
-                        <ProgressBar completed={100} progress={Math.round(tasksProgress)}/>
-                    </div>
-                    <p>Successfully completed {goals.tasksMet} of {goals.tasksGoal} targeted tasks.</p>
+                <p className="mt-5">Check out ways to improve your company numbers by checking the report.</p>
+                <div className="mt-3">
+                        <Link className="button-dark-rounded px-10 py-3 font-normal">SEE REPORT</Link>
                 </div>
             </div>
-            <div className="bg-gray-300 m-6 pb-3">
+            <div className="bg-accent-background border-accent-1 border-2 rounded-md m-6">
                 <div className="flex relative justify-center px-3 py-1">
                     <h2 className="text-2xl">Your Employees</h2>
                     <div className="absolute right-5 mt-2">
@@ -81,7 +81,7 @@ export default function AdminHome() {
                 </div>
                 <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
                 <div className="flex justify-center px-3">
-                    <Link to="/register" className="button-white-rounded my-6 w-full ml-auto">Register A New Employee</Link>
+                    <Link to="/register" className="button-dark-rounded my-6 w-full ml-auto">Register A New Employee</Link>
                 </div>
                 <div className="overflow-y-auto h-96">
                     <EmployeesList />

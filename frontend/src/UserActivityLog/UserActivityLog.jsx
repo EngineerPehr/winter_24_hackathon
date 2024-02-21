@@ -7,7 +7,7 @@ import { createEntry } from "../utils/api";
 
 export default function UserActivityLog() {
     const { userId } = useParams()
-    const [error, setError] = useState(null)
+
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
@@ -33,16 +33,19 @@ export default function UserActivityLog() {
     ]
     const suggestions = [
         {
-            title: "Nutrition Tips",
-            tip: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            title: "Sleep Disorders Guide",
+            tip: "Explore educational resources for common sleep disorders. Including self help modules or be connected with a sleep specialist. Establish your own sleep routine.",
+            link: "/tips/sleep"
         },
         {
-            title: "Relaxation Sounds",
-            tip: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            title: "Physical Fitness Guide",
+            tip: "Navigate a variety of workout plans, engaging activities, or find local trails. Learn the importance of physical activity for your personal better mental well-being.",
+            link: "/tips/fitness"
         },
         {
-            title: "Meditation Guide",
-            tip: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            title: "Meditation & Relaxation Guide",
+            tip: "Learn meditation and deep relaxation techniques to better your sleep quality and lower your daily stress levels. Personalized mood tracking to discover your stress triggers.",
+            link: "/tips/meditation"
         },
         {
             title: "Link Audio Books",
@@ -77,7 +80,7 @@ export default function UserActivityLog() {
         try {
             await createEntry(entry, abortController.signal)
         } catch (er) {
-            setError(er)
+            console.error(er)
         } finally {
             abortController.abort()
             navigate(`/user/${userId}/home`);
@@ -88,38 +91,29 @@ export default function UserActivityLog() {
         <div className="columns-2">
             <div className="break-after-column m-6">
                 <div className="">
-                    <h2 className="text-3xl font-bold">Today"s Activity</h2>
+                    <h2 className="text-3xl font-bold">Today's Activity</h2>
+                    <hr className="mt-1 h-px border-0 bg-black"/>
                 </div>
                 <div className="mt-6">
                     <ActivityLogForm entry={entry} handleChange={handleChange} handleSubmit={handleSubmit}/>
                 </div>
-                <div className="flex flex-col my-2">
-                    <Link to={`/user/${userId}/history`} className="w-6/12 button-dark-rounded my-2" reloadDocument>PAST REPORTS</Link>
-                </div>
-                <div className="">
-                    <h2 className="text-2xl">Daily Goal Reminder</h2>
-                    <div className="text-lg">
-                        <h3>Sleep Duration: 8 hours per day</h3>
-                        <h3>BMI 18.5% to 24.9%</h3>
-                        <h3>Steps: 6,000 to 8,000 steps per day</h3>
-                        <h3>Stress Levels: Below 5</h3>
-                        <h3>Heart Rate: Below 70</h3>
-                    </div>
+                <div className="flex flex-row gap-2 my-2">
+                    <Link to={`/user/${userId}/home`} className="w-1/2 button-dark-rounded" reloadDocument>DASHBOARD</Link>
+                    <Link to={`/user/${userId}/history`} className="w-1/2 button-dark-rounded" reloadDocument>PAST REPORTS</Link>
                 </div>
             </div>
-            <div className="bg-gray-300 m-6">
+            <div className="bg-accent-background border-accent-1 border-2 rounded-md m-6">
                 <div className="flex relative justify-center px-3">
-                <h2 className="text-2xl">Sleep Quality Guides</h2>
-                    <div className="absolute right-5 mt-1.5">
+                <h2 className="text-3xl">Sleep Quality Guides</h2>
+                    <div className="absolute right-5 mt-2">
                         <DropDownMenuButton options={menuOptions} />
                     </div>
                 </div>
-                <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
-                <div className="px-3 pb-1">
+                <hr className="h-px border-0 bg-black"/>
+                <div className="px-3">
                     <SuggestionCard suggestion={suggestions[0]} />
                     <SuggestionCard suggestion={suggestions[1]} />
                     <SuggestionCard suggestion={suggestions[2]} />
-                    <SuggestionCard suggestion={suggestions[3]} />
                 </div>
             </div>
         </div>

@@ -59,9 +59,9 @@ export default function UserPastReports() {
                     </div>
                 </div>
             </div>
-            <div className="bg-gray-300 m-6 pb-7">
+            <div className="bg-accent-background border-accent-1 border-2 rounded-md mx-6 mt-6">
                 <div className="flex relative justify-center px-3 pt-1">
-                <h2 className="text-2xl">Activity Log Summary</h2>
+                    <h2 className="text-2xl">Activity Log Summary</h2>
                     <div className="absolute right-5 mt-1.5">
                         <DropDownMenuButton options={menuOptions} />
                     </div>
@@ -74,7 +74,7 @@ export default function UserPastReports() {
                         <option value="oldest">Oldest </option>
                     </select>
                 </div>
-                <div className="overflow-y-auto border-2 rounded-sm border-slate-800 h-96 m-1">
+                <div className="overflow-y-auto rounded-sm border-slate-800 h-96 m-1">
                     <EntriesList listOrder={listOrder}/>
                 </div>
             </div>

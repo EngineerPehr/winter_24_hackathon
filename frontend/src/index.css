@@ -35,20 +35,19 @@ h1, h2, h3, h4, h5, h6, p {
 @layer components {
   .button-white-rounded {
     @apply 
-      text-black
+      text-primary-3
       text-center
       text-xl
       font-medium
       font-arial
-      bg-white
+      bg-primary-2
       border-2
-      border-black
+      border-primary-3
       rounded-xl
       focus:outline-none
-      hover:bg-gray-100
+      hover:bg-accent-3
       focus:ring-4
-      focus:ring-gray-100
-      px-5
+      focus:ring-accent-3
       py-1
       me-2
       mb-2
@@ -61,11 +60,11 @@ h1, h2, h3, h4, h5, h6, p {
     text-xl
     font-bold
     font-arial
-    bg-gray-800
-    hover:bg-gray-900
+    bg-primary-3
+    hover:bg-accent-2
     focus:outline-none
     focus:ring-4
-    focus:ring-gray-300
+    focus:ring-accent-2
     rounded-xl
     pt-1.5
     pb-1.5
