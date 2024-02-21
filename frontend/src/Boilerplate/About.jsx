@@ -32,23 +32,6 @@ const About = () => {
                     converge, creating a space where you can truly thrive.
                 </p>
                 <br />
-                <h5 className="text-xl text-center">Your Path to Better</h5>
-                <br />
-                <p>
-                    Sleep Workplace Wellness serves as your ally in the pursuit
-                    of better sleep and enhanced mental resilience. We invite
-                    you to take the first step on your path to improved
-                    well-being by exploring the resources and community we
-                    offer. Whether you're a seasoned advocate for mental health
-                    or just beginning your journey, we are here to guide you
-                    towards a healthier, more restful life. At Workplace
-                    Wellness, we believe that prioritizing your mental health is
-                    a transformative journey—one that starts with a good night's
-                    sleep. Join us, and let's navigate this path together,
-                    embracing the profound impact that quality sleep can have on
-                    your overall wellness. Welcome to Workplace Wellness, where
-                    your journey to better sleep and mental resilience begins.
-                </p>
             </section>
         </>
     )

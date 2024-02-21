@@ -1,13 +1,14 @@
-import React from "react";
+import React from 'react'
 
 export default function ActivityLogForm({ entry, handleChange, handleSubmit }) {
-
     return (
         <div className="text-2xl text-primary-1">
             <form onSubmit={handleSubmit}>
                 <div className="flex justify-between my-1 h-9">
-                    <label htmlFor="sleep_duration">Sleep Duration &#40;Hours&#41; *</label>
-                    <input 
+                    <label htmlFor="sleep_duration">
+                        Sleep Duration &#40;Hours&#41; *
+                    </label>
+                    <input
                         type="number"
                         name="sleep_duration"
                         id="sleep_duration"
@@ -22,10 +23,14 @@ export default function ActivityLogForm({ entry, handleChange, handleSubmit }) {
                 </div>
                 <div className="flex justify-between my-1 h-9">
                     <label htmlFor="bmi_category">BMI *</label>
-                    <select id="bmi_category" name="bmi_category" className="border-2 rounded-md w-1/2 text-s py-1 ">
-                        <option value={"Normal"}>Normal</option>
-                        <option value={"Underweight"}>Underweight</option>
-                        <option value={"Overweight"}>Overweight</option>
+                    <select
+                        id="bmi_category"
+                        name="bmi_category"
+                        className="border-2 rounded-md w-1/2 text-s py-1 "
+                    >
+                        <option value={'Normal'}>Normal</option>
+                        <option value={'Underweight'}>Underweight</option>
+                        <option value={'Overweight'}>Overweight</option>
                     </select>
                 </div>
                 <div className="flex justify-between my-1 h-9">
@@ -43,7 +48,9 @@ export default function ActivityLogForm({ entry, handleChange, handleSubmit }) {
                     />
                 </div>
                 <div className="flex justify-between my-1 h-9">
-                    <label htmlFor="stress_level">Stress Level &#40;1-10&#41; *</label>
+                    <label htmlFor="stress_level">
+                        Stress Level &#40;1-10&#41; *
+                    </label>
                     <input
                         type="number"
                         name="stress_level"
@@ -74,14 +81,19 @@ export default function ActivityLogForm({ entry, handleChange, handleSubmit }) {
                     <small>* Required Entry</small>
                 </div>
                 <div className="flex flex-row gap-2 my-2">
-                    <button onSubmit={handleSubmit} type="submit" className="button-white-rounded font-bold mt-3 w-1/2">SUBMIT</button>
+                    <button
+                        onSubmit={handleSubmit}
+                        type="submit"
+                        className="button-white-rounded font-bold mt-3 w-1/2"
+                    >
+                        SUBMIT
+                    </button>
                     <div className="w-1/2"></div>
                 </div>
             </form>
         </div>
     )
 }
-
 
 /* 
                     <input
