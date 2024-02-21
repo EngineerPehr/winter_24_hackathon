@@ -34,6 +34,7 @@ export default function EmployeesList() {
                             employee={employee}
                             setError={setError}
                             loadUsers={loadUsers}
+                            imgNumber={employee.person_id}
                         />
                     </li>
                 ))}
