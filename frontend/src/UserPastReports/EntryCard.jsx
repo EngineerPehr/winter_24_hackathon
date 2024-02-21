@@ -26,8 +26,8 @@ export default function EntryCard({ entry, loadEntries }) {
         } finally {
             setOpenModal(false)
             loadEntries()
+            abortController.abort()
         }
-        return () => abortController.abort()
     }
 
     // Hides this card
