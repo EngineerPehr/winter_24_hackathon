@@ -1,13 +1,12 @@
 const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || 'http://localhost:5001'
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:5001"
 
 // Some placeholder data to play around with until we get the backend connected
 
-
 const headers = new Headers()
-headers.append('Content-Type', 'application/json')
+headers.append("Content-Type", "application/json")
 
-async function fetchJson (url, options, onCancel) {
+async function fetchJson(url, options, onCancel) {
     try {
         const response = await fetch(url, options)
 
@@ -23,7 +22,7 @@ async function fetchJson (url, options, onCancel) {
 
         return payload.data
     } catch (error) {
-        if (error.name !== 'AbortError') {
+        if (error.name !== "AbortError") {
             console.error(error.stack)
             throw error
         }
@@ -33,17 +32,17 @@ async function fetchJson (url, options, onCancel) {
 }
 
 // Returns an array of all users
-export async function listUsers (signal) {
+export async function listUsers(signal) {
     const url = `${API_BASE_URL}/data`
 
     return await fetchJson(url, { headers, signal })
 }
 
 // Returns a single user with the matching userId
-export async function readUserById (userId, signal) {
+export async function readUserById(userId, signal) {
     const url = `${API_BASE_URL}/data/${userId}`
     const options = {
-        method: 'GET',
+        method: "GET",
         headers,
         signal,
     }
@@ -52,11 +51,11 @@ export async function readUserById (userId, signal) {
 }
 
 // Returns a single user with the matching username
-export async function readUserByUsername (username, signal) {
+export async function readUserByUsername(username, signal) {
     const url = `${API_BASE_URL}/data/user/${username}`
 
     const options = {
-        method: 'GET',
+        method: "GET",
         headers,
         signal,
     }
@@ -65,10 +64,10 @@ export async function readUserByUsername (username, signal) {
 }
 
 // Creates a new user
-export async function createUser (user, signal) {
+export async function createUser(user, signal) {
     const url = `${API_BASE_URL}/data`
     const options = {
-        method: 'POST',
+        method: "POST",
         headers,
         body: JSON.stringify({ data: user }),
         signal,
@@ -78,10 +77,10 @@ export async function createUser (user, signal) {
 }
 
 // Updates an existing user
-export async function updateUser (userId, updatedUser, signal) {
+export async function updateUser(userId, updatedUser, signal) {
     const url = `${API_BASE_URL}/data/${userId}`
     const options = {
-        method: 'PUT',
+        method: "PUT",
         headers,
         body: JSON.stringify({ data: updatedUser }),
         signal,
@@ -91,10 +90,10 @@ export async function updateUser (userId, updatedUser, signal) {
 }
 
 // Deletes a user (if the user exists, obviously)
-export async function deleteUser (userId, signal) {
+export async function deleteUser(userId, signal) {
     const url = `${API_BASE_URL}/data/${userId}`
     const options = {
-        method: 'DELETE',
+        method: "DELETE",
         headers,
         signal,
     }
@@ -103,17 +102,17 @@ export async function deleteUser (userId, signal) {
 }
 
 // Returns an array of all entries for all users
-export async function listEntries (signal) {
+export async function listEntries(signal) {
     const url = `${API_BASE_URL}/entries`
 
     return await fetchJson(url, { headers, signal })
 }
 
 // Creates a new entry
-export async function createEntry (entry, signal) {
+export async function createEntry(entry, signal) {
     const url = `${API_BASE_URL}/entries`
     const options = {
-        method: 'POST',
+        method: "POST",
         headers,
         body: JSON.stringify({ data: entry }),
         signal,
@@ -123,10 +122,10 @@ export async function createEntry (entry, signal) {
 }
 
 // Returns a single entry with the matching entryId
-export async function readEntryById (entryId, signal) {
+export async function readEntryById(entryId, signal) {
     const url = `${API_BASE_URL}/entries/${entryId}`
     const options = {
-        method: 'GET',
+        method: "GET",
         headers,
         signal,
     }
@@ -134,10 +133,10 @@ export async function readEntryById (entryId, signal) {
     return await fetchJson(url, options)
 }
 
-export async function readEntriesByPerson (userId, signal) {
+export async function readEntriesByPerson(userId, signal) {
     const url = `${API_BASE_URL}/entries/user/${userId}`
     const options = {
-        method: 'GET',
+        method: "GET",
         headers,
         signal,
     }
@@ -146,10 +145,10 @@ export async function readEntriesByPerson (userId, signal) {
 }
 
 // Deletes an entry (if the entry exists, obviously)
-export async function deleteEntry (entryId, signal) {
+export async function deleteEntry(entryId, signal) {
     const url = `${API_BASE_URL}/entries/${entryId}`
     const options = {
-        method: 'DELETE',
+        method: "DELETE",
         headers,
         signal,
     }

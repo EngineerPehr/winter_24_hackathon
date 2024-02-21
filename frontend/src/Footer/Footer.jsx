@@ -223,3 +223,4 @@ export default function Footer() {
 Tailwind has a "columns" utility which can do stuff like this to especially 
 when combined with the width utility "w-*" but I haven't completely figured it out */
 }
+

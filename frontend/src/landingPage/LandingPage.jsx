@@ -11,7 +11,7 @@ export default function LandingPage() {
                     <p>At Workplace Wellness, we are dedicated to guiding you on a journey towards
 improved sleep quality and enhanced mental wellness. Our mission is to empower
 you with our expertly curated articles, evidence-based tips, and personalized
-strategies designed to help you unlock the secrets to a restful night's sleep. Whether you're dealing with stress, anxiety, insomnia, or simply seeking to
+strategies designed to help you unlock the secrets to a restful night"s sleep. Whether you"re dealing with stress, anxiety, insomnia, or simply seeking to
 optimize your sleep routine, we are here to provide a compassionate and
 informative space where you can embark on your path to better sleep and mental
 resilience.</p><br/>
@@ -27,37 +27,37 @@ resilience.</p><br/>
                                 mx-50 px-20 py-6
                                 text-xl font-bold text-primary 
                                 transition duration-150 ease-in-out 
-                                hover:border-primary-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-primary-600 
+                                hover:border-primary-600 hover:bg-blue-900 hover:text-primary-600 
                                 focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 
                                 active:border-primary-700 active:text-primary-700
                                  dark:hover:bg-neutral-100 dark:hover:bg-opacity-10 border-black 
-                                 hover:bg-gray-100 focus:ring-4
-                                focus:outline-none focus:ring-gray-100 
-                                rounded-xl px-10 py-1 me-2 mb-2"
+                                 focus:ring-gray-100 
+                                me-2 mb-2"
                             >SIGN IN</Link>
                         </div>
-                        <p className="text-2xl mt-12 mb-5">Don't have an account?</p>
+                        <hr />
+                        <p className="text-2xl mt-12 mb-5">Don"t have an account?</p>
                         <div className="pb-5 mt-3 mb-6">
                             <Link to="/register"
                                 className="w-1/2 rounded border-2 bg-blue-800  text-white
                                 mx-50 px-20 py-6 
                                 text-xl font-bold text-primary 
                                 transition duration-150 ease-in-out 
-                                hover:border-primary-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-primary-600 
+                                hover:border-primary-600 hover:bg-blue-900 hover:text-primary-600 
                                 focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 
                                 active:border-primary-700 active:text-primary-700
                                  dark:hover:bg-neutral-100 dark:hover:bg-opacity-10 border-black 
-                                 hover:bg-gray-100 focus:ring-4
-                                 focus:outline-none focus:ring-gray-100 
-                                 rounded-xl px-10 py-1 me-2 mb-2"
+                                 focus:ring-gray-100 
+                                me-2 mb-2"
                             >REGISTER</Link>
                         </div> 
                     </div>
                 </div>
             </div>
 
-            {/* Footer section */}
+            {/* Footer section
             <div>
+
                 
             </div>
         </div>    
