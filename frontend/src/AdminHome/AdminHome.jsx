@@ -91,7 +91,7 @@ export default function AdminHome() {
                 </p>
                 <div className="mt-3">
                     <Link
-                        to="admin/report"
+                        to="/admin/report"
                         className="button-dark-rounded px-10 py-3 font-normal"
                     >
                         SEE REPORT

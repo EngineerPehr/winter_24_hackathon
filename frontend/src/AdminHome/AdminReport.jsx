@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import EmployeesList from './EmployeesList'
-import mood from './mood_img.png'
 import DropDownMenuButton from '../utils/DropDownMenuButton'
 
 export default function AdminReport() {
@@ -89,34 +88,34 @@ export default function AdminReport() {
                         Program (EAP) Health Insurance Coverage
                     </p>
                     <br />
-                    <Link
-                        to="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/recharge-with-planned-mental-health-day"
+                    <a
+                        href="https://www.mayoclinichealthsystem.org/hometown-health/speaking-of-health/recharge-with-planned-mental-health-day"
                         className="text-blue-500 underline font-normal"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         Mental Health Days
-                    </Link>
+                    </a>
                     <br />
                     <br />
-                    <Link
-                        to="https://www.hhs.gov/about/agencies/asa/foh/bhs/employee-assistant-program/index.html"
+                    <a
+                        href="https://www.hhs.gov/about/agencies/asa/foh/bhs/employee-assistant-program/index.html"
                         className="text-blue-500 underline font-normal"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         Employee Assistance Program (EAP)
-                    </Link>
+                    </a>
                     <br />
                     <br />
-                    <Link
-                        to="https://www.healthcare.gov/"
+                    <a
+                        href="https://www.healthcare.gov/"
                         className="text-blue-500 underline font-normal"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         Health Insurance Coverage
-                    </Link>
+                    </a>
                 </div>
             </div>
             <div className="bg-accent-background border-accent-1 border-2 rounded-md m-6">
