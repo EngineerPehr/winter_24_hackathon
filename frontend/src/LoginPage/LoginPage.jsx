@@ -80,7 +80,7 @@ export default function LoginPage() {
                         >
                             <label htmlFor="password"></label>
                             <input
-                                type="string"
+                                type="password"
                                 id="password"
                                 value={password}
                                 placeholder="........"
@@ -89,7 +89,12 @@ export default function LoginPage() {
                         </div>
                         <div className="flex flex-col items-center justify-center mt-6 mb-20">
                             <p>Forget your password?</p>
-                            <a href="#" className="underline hover:text-blue-500">Reset Password</a>
+                            <a
+                                href="#"
+                                className="underline hover:text-blue-500"
+                            >
+                                Reset Password
+                            </a>
                         </div>
                         {/* Sign in button */}
                         <div className="flex flex-col items-center justify-center">
