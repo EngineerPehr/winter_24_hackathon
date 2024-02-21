@@ -28,7 +28,6 @@ export default function LoginPage() {
             )
             const userId = responseFromApi.person_id
             const admin = responseFromApi.admin
-            console.log(userId)
             if (admin) {
                 navigate('/admin/home')
             } else {
@@ -74,13 +73,14 @@ export default function LoginPage() {
                         </div>
                         {/* Password input */}
                         <div
-                            class="relative mb-6 py-2 px-2 w-full rounded border-2"
                             data-te-input-wrapper-init
                         >
                             <label htmlFor="password"></label>
                             <input
-                                type="string"
+                                className="relative mb-6 py-2 px-2 w-full rounded border-2"
+                                type="password"
                                 id="password"
+                                autocomplete="new-password"
                                 value={password}
                                 placeholder="........"
                                 onChange={handlePasswordChange}

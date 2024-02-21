@@ -6,8 +6,7 @@ import Spinner from "../utils/Spinner";
 
 export default function EntriesList({ listOrder, setListOrder}) {
     const { userId } = useParams()
-    const [entries, setEntries] = useState([])
-    const [error, setError] = useState(null)
+    const [entries, setEntries] = useState(null)
 
     // Fetches all users from the API
     const loadEntries = useCallback(async () => {
@@ -15,9 +14,10 @@ export default function EntriesList({ listOrder, setListOrder}) {
     
         try {
             const response = await readEntriesByPerson(userId, abortController.signal)
+            console.log(`entries: ${entries}`)
             setEntries(response)
-        } catch (error) {
-            setError(error)
+        } catch (er) {
+            console.error(er)
         } finally {
             abortController.abort()
         }
@@ -33,7 +33,7 @@ export default function EntriesList({ listOrder, setListOrder}) {
             <ul>
                 {entries.map((entry) => 
                     <li key={entry.entry_id}>
-                        <EntryCard entry={entry} setError={setError} loadEntries={loadEntries} />
+                        <EntryCard entry={entry} loadEntries={loadEntries} />
                     </li>
                 )}
             </ul>

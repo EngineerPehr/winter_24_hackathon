@@ -8,7 +8,7 @@ import meterImageOk from "./ok.jpg"
 import moment from 'moment';
 
 
-export default function EntryCard({ entry, setError, loadEntries }) {
+export default function EntryCard({ entry, loadEntries }) {
     const [hidden, setHidden] = useState(false)
     const [openModal, setOpenModal] = useState(false)
     const { date } = entry
@@ -22,7 +22,7 @@ export default function EntryCard({ entry, setError, loadEntries }) {
         try {
             await deleteEntry(entry.entryId, abortController.signal)
         } catch (er) {
-            setError(er)
+            console.error(er)
         } finally {
             setOpenModal(false)
             loadEntries()
