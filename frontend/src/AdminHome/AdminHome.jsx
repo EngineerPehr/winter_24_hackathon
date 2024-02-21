@@ -19,23 +19,23 @@ export default function AdminHome() {
     const menuOptions = [
         {
             option: "Profile",
-            route: "",
+            route: `/user/1/home`,
         },
         {
-            option: "Report History",
-            route: "",
+            option: "Careers",
+            route: "/bp/careers",
         },
         {
-            option: "Settings",
-            route: "",
+            option: "Contact",
+            route: "/bp/about",
         },
         {
-            option: "Full List of Employees",
-            route: "",
+            option: "Terms",
+            route: "/bp/terms",
         },
         {
-            option: "IT Help Desk",
-            route: "",
+            option: "About",
+            route: "/bp/privacy",
         },
     ]
     // Calculate percent progress towards a goal

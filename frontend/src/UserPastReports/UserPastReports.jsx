@@ -21,12 +21,12 @@ export default function UserPastReports() {
             route: `/user/${userId}/log`,
         },
         {
-            option: "Settings",
-            route: ``,
+            option: "Terms",
+            route: `bp/terms`,
         },
         {
             option: "Privacy Policy",
-            route: ``,
+            route: `bp/privacy`,
         },
     ]
     const [listOrder, setListOrder] = useState("newest")

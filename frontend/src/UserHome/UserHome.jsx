@@ -23,12 +23,12 @@ export default function UserHome() {
             route: `/user/${userId}/log`,
         },
         {
-            option: "Settings",
-            route: ``,
+            option: "Terms",
+            route: `bp/terms`,
         },
         {
             option: "Privacy Policy",
-            route: ``,
+            route: `bp/privacy`,
         },
     ]
     const [user, setUser] = useState(null)
