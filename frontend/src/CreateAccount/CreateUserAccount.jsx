@@ -5,18 +5,24 @@ import { createUser } from '../utils/api'
 export default function CreateUserAccount() {
     const [user, setUser] = useState({
         username: '',
-        fullname: '',
-        password: '',
         admin: false,
     })
+    const [fullname, setFullName] = useState('')
+    const [password, setPassword] = useState('')
 
     const navigate = useNavigate()
 
     function handleChange({ target: { name, value } }) {
-        setUser((previousUser) => ({
-            ...previousUser,
-            [name]: value,
-        }))
+        if (name === 'fullname') {
+            setFullName(value)
+        } else if (name === 'password') {
+            setPassword(value)
+        } else {
+            setUser((previousUser) => ({
+                ...previousUser,
+                [name]: value,
+            }))
+        }
     }
 
     const submitUser = useCallback(
@@ -74,7 +80,7 @@ export default function CreateUserAccount() {
                                 type="string"
                                 id="fullname"
                                 name="fullname"
-                                value={user.userFullname}
+                                value={fullname}
                                 placeholder="First and Last Name"
                                 onChange={handleChange}
                             />
@@ -104,7 +110,7 @@ export default function CreateUserAccount() {
                                 type="password"
                                 id="password"
                                 name="password"
-                                value={user.password}
+                                value={password}
                                 placeholder="Password"
                                 onChange={handleChange}
                             />
@@ -115,7 +121,8 @@ export default function CreateUserAccount() {
                                 type="submit"
                                 className="button-dark-rounded w-full mx-20"
                             >
-                                <a href="/user/registerForm">CONTINUE</a>
+                                {/* <a href="/user/registerForm"></a> */}
+                                CONTINUE
                             </button>
                         </div>
                     </div>
