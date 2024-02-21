@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import EmployeesList from './EmployeesList'
-import graph from './graph.jpg'
 import mood from './mood_img.png'
 import DropDownMenuButton from '../utils/DropDownMenuButton'
 
@@ -91,7 +90,10 @@ export default function AdminHome() {
                     the report.
                 </p>
                 <div className="mt-3">
-                    <Link className="button-dark-rounded px-10 py-3 font-normal">
+                    <Link
+                        to="admin/report"
+                        className="button-dark-rounded px-10 py-3 font-normal"
+                    >
                         SEE REPORT
                     </Link>
                 </div>

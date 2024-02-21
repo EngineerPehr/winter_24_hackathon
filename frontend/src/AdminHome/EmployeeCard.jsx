@@ -40,6 +40,13 @@ export default function EmployeeCard({
         1: img1,
         2: img2,
         3: img3,
+        4: img1,
+        5: img2,
+        6: img3,
+        7: img1,
+        8: img2,
+        9: img3,
+        10: img1,
     }
 
     if (hidden) {
