@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
-import { useNavigate, useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { createUser } from '../utils/api'
 
 export default function CreateAccount() {
     const [userType, setUserType] = useState('')
-    const history = useHistory() // Initialize useHistory hook
+    const navigate = useNavigate() // Initialize useHistory hook
     const [user, setUser] = useState({
         username: '',
         admin: true,
@@ -57,10 +57,10 @@ export default function CreateAccount() {
 
             if (userType === 'admin') {
                 // If admin is selected, navigate to Create admin account page
-                history.push('/admin/home')
+                navigate('/admin/home')
             } else {
                 // Navigate to Create user account page
-                history.push(`/user/${response.person_id}/home`)
+                navigate(`/user/${response.person_id}/home`)
             }
         } catch (error) {
             console.error(error)

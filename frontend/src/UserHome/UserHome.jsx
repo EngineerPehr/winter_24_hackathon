@@ -47,7 +47,7 @@ export default function UserHome() {
         }
     }, [userId])
     
-    useEffect(() => loadUser, [loadUser])
+    useEffect(() => { loadUser() }, [loadUser])
 
     if (user) {
         return (
