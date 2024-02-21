@@ -17,6 +17,9 @@ import Contact from '../Boilerplate/Contact'
 import Terms from '../Boilerplate/Terms'
 import PrivacyPolicy from '../Boilerplate/Privacy'
 import AdminReport from '../AdminHome/AdminReport'
+import TipsSleep from '../Tips/TipsSleep'
+import TipsMed from '../Tips/TipsMed'
+import TipsFit from '../Tips/TipsFit'
 // import ImagePage from "../Tips/ImagePage"
 
 export default function RoutesComponent() {
@@ -40,6 +43,9 @@ export default function RoutesComponent() {
             <Route path="/bp/contact" element={<Contact />} />
             <Route path="/bp/terms" element={<Terms />} />
             <Route path="/bp/privacy" element={<PrivacyPolicy />} />
+            <Route path="/tips/sleep" element={<TipsSleep />} />
+            <Route path="/tips/fitness" element={<TipsFit />} />
+            <Route path="/tips/meditation" element={<TipsMed />} />
         </Routes>
     )
 }
