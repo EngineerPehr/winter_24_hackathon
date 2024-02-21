@@ -79,12 +79,9 @@ export default function CreateAccount() {
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col items-center justify-center">
                         {/* Select user type */}
-                        <div
-                            className="relative mt-8 mb-2 py-2 w-full rounded border-2"
-                            data-te-input-wrapper-init
-                        >
                             <label htmlFor="userType"></label>
                             <select
+                            className=" mt-8 mb-2 py-2 w-full rounded border-2"
                                 name="dropdown"
                                 id="userType"
                                 onChange={handleUserTypeChange}
@@ -95,29 +92,21 @@ export default function CreateAccount() {
                                 <option value="admin">Admin</option>
                                 <option value="user">User</option>
                             </select>
-                        </div>
                         {/* Username input */}
-                        <div
-                            className="relative my-6 py-2 px-2 w-full rounded border-2"
-                            data-te-input-wrapper-init
-                        >
                             <label htmlFor="username"></label>
                             <input
-                                type="string"
+                            className="relative my-6 py-2 px-2 w-full rounded border-2"
+                                type="text"
                                 id="username"
                                 name="username"
                                 value={user.username}
                                 placeholder="Enter Username"
                                 onChange={handleChange}
                             />
-                        </div>
                         {/* Password input */}
-                        <div
-                            class="relative mb-6 py-2 px-2 w-full rounded border-2"
-                            data-te-input-wrapper-init
-                        >
                             <label htmlFor="password"></label>
                             <input
+                            className="relative mb-6 py-2 px-2 w-full rounded border-2"
                                 type="password"
                                 id="password"
                                 name="password"
@@ -125,7 +114,6 @@ export default function CreateAccount() {
                                 placeholder="Password"
                                 onChange={handleChange}
                             />
-                        </div>
                         {/* <div
                             class="relative mb-6 py-2 px-2 w-full rounded border-2"
                             data-te-input-wrapper-init

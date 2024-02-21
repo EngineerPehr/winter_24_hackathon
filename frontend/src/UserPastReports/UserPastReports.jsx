@@ -41,7 +41,7 @@ export default function UserPastReports() {
             <div className="break-after-column m-6">
                 <div className="pt-2">
                     <h1 className="text-3xl font-bold">Past Reports</h1>
-                    <hr className="h-px border-0" style={{ backgroundColor: "#000000"}} />
+                    <hr className="h-px border-0 bg-black" />
                     <p className="my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 </div>
                 <div className="flex flex-col pb-5">
@@ -66,7 +66,7 @@ export default function UserPastReports() {
                         <DropDownMenuButton options={menuOptions} />
                     </div>
                 </div>
-                <hr className="h-px border-0" style={{ backgroundColor: "#000000"}}/>
+                <hr className="h-px border-0 bg-black"/>
                 <div className="flex justify-end gap-2 px-3 py-4">
                     <label htmlFor="sort" className="text-xl font-bold pt-2">Sort By: </label>
                     <select id="sort" name="sort" className=" rounded-lg w-28" onChange={toggleListOrder}>

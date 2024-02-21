@@ -58,23 +58,16 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col items-center justify-center">
                         {/* Username input */}
-                        <div
-                            className="relative mt-8 mb-6 py-2 px-2 w-full rounded border-2"
-                            data-te-input-wrapper-init
-                        >
                             <label htmlFor="username"></label>
                             <input
+                            className="relative mt-8 mb-6 py-2 px-2 w-full rounded border-2"
                                 type="string"
                                 id="username"
                                 value={username}
                                 placeholder="Enter Username"
                                 onChange={handleUsernameChange}
                             />
-                        </div>
                         {/* Password input */}
-                        <div
-                            data-te-input-wrapper-init
-                        >
                             <label htmlFor="password"></label>
                             <input
                                 className="relative mb-6 py-2 px-2 w-full rounded border-2"
@@ -85,7 +78,6 @@ export default function LoginPage() {
                                 placeholder="........"
                                 onChange={handlePasswordChange}
                             />
-                        </div>
                         <div className="flex flex-col items-center justify-center mt-6 mb-20">
                             <p>Forget your password?</p>
                             <a href="#" className="underline hover:text-blue-500">Reset Password</a>
