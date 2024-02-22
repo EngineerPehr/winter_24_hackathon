@@ -1,8 +1,7 @@
-// Footer.jsx
-
 import React from 'react'
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa' // Import the icons
 import logo from './wwlogo_notext.png'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
@@ -12,7 +11,12 @@ export default function Footer() {
                     {/* first half section */}
                     {/* social network */}
                     <div className="me-1 w-full">
-                        <img src={logo} alt="Logo" className="w-20 h-20" />
+                        <Link
+                            to="/"
+                            className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
+                        >
+                            <img src={logo} alt="Logo" className="w-20 h-20" />
+                        </Link>
                         <p className="mb-5">
                             Where your mental health comes first.
                         </p>
@@ -24,72 +28,52 @@ export default function Footer() {
                     <div className="col-span-1 flex flex-col justify-center mr-10 w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
                         <h5 className="font-bold">Company</h5>
                         <p>
-                            <a
-                                href="about.html"
+                            <Link
+                                to="/bp/about"
                                 className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
                             >
                                 About
-                            </a>
+                            </Link>
                         </p>
                         <p>
-                            <a
-                                href="contact-us.html"
-                                className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
-                            >
-                                Contact us
-                            </a>
-                        </p>
-                        <p>
-                            <a
-                                href="careers.html"
+                            <Link
+                                to="/bp/careers"
                                 className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
                             >
                                 Careers
-                            </a>
+                            </Link>
                         </p>
                         <p>
-                            <a
-                                href="/"
+                            <Link
+                                to="/bp/contact"
+                                className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
+                            >
+                                Contact us
+                            </Link>
+                        </p>
+                        <p>
+                            <Link
+                                to="/"
                                 className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
                             >
                                 Home
-                            </a>
+                            </Link>
                         </p>
                     </div>
                     {/* Support */}
                     <div className="col-span-1 flex flex-col justify-center mx-10 w-full md:w-1/2 lg:w-2/3 xl:w-3/4">
                         <h5 className="font-bold">Support</h5>
-                        <p>
-                            <a
-                                href="help.html"
-                                className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
-                            >
-                                Help center
-                            </a>
+                        <p className="text-neutral-600 dark:text-neutral-200">
+                            Help center
                         </p>
-                        <p>
-                            <a
-                                href="getting-started.html"
-                                className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
-                            >
-                                Getting started
-                            </a>
+                        <p className="text-neutral-600 dark:text-neutral-200">
+                            Getting started
                         </p>
-                        <p>
-                            <a
-                                href="report-bug.html"
-                                className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
-                            >
-                                Report a bug
-                            </a>
+                        <p className="text-neutral-600 dark:text-neutral-200">
+                            Report a bug
                         </p>
-                        <p>
-                            <a
-                                href="chat-support.html"
-                                className="text-neutral-600 dark:text-neutral-200 hover:text-blue-500 dark:hover:text-blue-400"
-                            >
-                                Chat support
-                            </a>
+                        <p className="text-neutral-600 dark:text-neutral-200">
+                            Chat support
                         </p>
                     </div>
                     {/* Contact */}
@@ -197,13 +181,19 @@ export default function Footer() {
                 <div>Copyright &copy; 2024</div>
                 <div>
                     All Rights Reserved |{' '}
-                    <a href="#" className="text-blue-500 hover:underline">
+                    <Link
+                        to="/bp/terms"
+                        className="text-blue-500 hover:underline"
+                    >
                         Terms and Conditions
-                    </a>{' '}
+                    </Link>{' '}
                     |{' '}
-                    <a href="#" className="text-blue-500 hover:underline">
+                    <Link
+                        to="/bp/privacy"
+                        className="text-blue-500 hover:underline"
+                    >
                         Privacy Policy
-                    </a>
+                    </Link>
                 </div>
             </div>
         </footer>
