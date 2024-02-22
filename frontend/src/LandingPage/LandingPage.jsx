@@ -53,7 +53,7 @@ export default function LandingPage() {
                         </div>
                         <hr />
                         <p className="text-2xl mt-12 mb-5">
-                            Don"t have an account?
+                            Don't have an account?
                         </p>
                         <div className="pb-5 mt-3 mb-6">
                             <Link
