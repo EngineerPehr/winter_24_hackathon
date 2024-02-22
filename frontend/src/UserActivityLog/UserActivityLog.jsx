@@ -85,7 +85,7 @@ export default function UserActivityLog() {
             console.error(er)
         } finally {
             abortController.abort()
-            navigate(`/user/${userId}/home`)
+            navigate(`/user/${userId}/history`)
         }
     }
 
