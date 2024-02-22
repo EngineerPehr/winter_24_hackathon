@@ -49,7 +49,7 @@ export default function ActivityLogForm({ entry, handleChange, handleSubmit }) {
                 </div>
                 <div className="flex justify-between my-1 h-9">
                     <label htmlFor="stress_level">
-                        Stress Level &#40;1-10&#41; *
+                        Stress Level &#40;1-10&#41;
                     </label>
                     <input
                         type="number"
@@ -57,7 +57,6 @@ export default function ActivityLogForm({ entry, handleChange, handleSubmit }) {
                         id="stress_level"
                         value={entry.stress_level}
                         onChange={handleChange}
-                        required={true}
                         min="1"
                         max="10"
                         className="border-2 rounded-md w-1/2"
