@@ -106,10 +106,7 @@ export default function AdminHome() {
                         <DropDownMenuButton options={menuOptions} />
                     </div>
                 </div>
-                <hr
-                    className="h-px border-0"
-                    style={{ backgroundColor: '#000000' }}
-                />
+                <hr className="h-px border-0 bg-black"/>
                 <div className="flex justify-center px-3">
                     <Link
                         to="/register"

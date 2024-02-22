@@ -31,47 +31,25 @@ export default function LandingPage() {
                     </p>
                 </div>
                 {/* Buttons section */}
-                <div className="bg-blue-100 m-10 pb-10">
+                <div className=" bg-accent-background border-2 border-primary-1 rounded m-6 pb-10">
                     <div className="flex flex-col items-center justify-center">
-                        <p className="text-2xl mt-8 mb-5">Already a member?</p>
-                        <div className="pb-5 mt-3">
+                        <p className="text-2xl mt-9 mb-3">Already a member?</p>
                             <Link
                                 to="/login"
-                                className="w-1/2 rounded border-2 bg-blue-800  text-white leading normal 
-                                mx-50 px-20 py-6
-                                text-xl font-bold text-primary 
-                                transition duration-150 ease-in-out 
-                                hover:border-primary-600 hover:bg-blue-900 hover:text-primary-600 
-                                focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 
-                                active:border-primary-700 active:text-primary-700
-                                 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10 border-black 
-                                 focus:ring-gray-100 
-                                me-2 mb-2"
+                                className="button-dark-rounded text-3xl rounded-2xl w-1/2 py-5"
                             >
                                 SIGN IN
                             </Link>
-                        </div>
-                        <hr />
-                        <p className="text-2xl mt-12 mb-5">
+                        <hr className="h-px border-1 border-gray-400 w-11/12 rounded-xl z-50 my-9"/>
+                        <p className="text-2xl  mb-3">
                             Don't have an account?
                         </p>
-                        <div className="pb-5 mt-3 mb-6">
                             <Link
                                 to="/register"
-                                className="w-1/2 rounded border-2 bg-blue-800  text-white
-                                mx-50 px-20 py-6 
-                                text-xl font-bold text-primary 
-                                transition duration-150 ease-in-out 
-                                hover:border-primary-600 hover:bg-blue-900 hover:text-primary-600 
-                                focus:border-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 
-                                active:border-primary-700 active:text-primary-700
-                                 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10 border-black 
-                                 focus:ring-gray-100 
-                                me-2 mb-2"
+                                className="button-dark-rounded text-3xl rounded-2xl w-1/2 py-5"
                             >
                                 REGISTER
                             </Link>
-                        </div>
                     </div>
                 </div>
             </div>
