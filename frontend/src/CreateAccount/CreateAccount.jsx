@@ -93,6 +93,7 @@ export default function CreateAccount() {
                     id="full-name"
                     name="full-name"
                     value={user.username}
+                    required={true}
                     placeholder="Legal First and Last Name"
                     onChange={handleChange}
                 />
@@ -150,6 +151,7 @@ export default function CreateAccount() {
                                         type="text"
                                         id="username"
                                         name="username"
+                                        required={true}
                                         value={user.username}
                                         placeholder="Enter Username"
                                         onChange={handleChange}

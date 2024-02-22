@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaX } from "react-icons/fa6";
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { Button, Modal } from 'flowbite-react';
