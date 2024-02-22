@@ -29,7 +29,7 @@ export default function LoginPage() {
             const userId = responseFromApi.person_id
             const admin = responseFromApi.admin
             if (admin) {
-                navigate('/admin/home')
+                navigate(`/admin/${userId}/home`)
             } else {
                 navigate(`/user/${userId}/home`)
             }
