@@ -53,7 +53,7 @@ export default function UserActivityLog() {
         },
     ]
     const date = new Date()
-    const navigate = useNavigate(); // Initialize useHistory hook
+    const navigate = useNavigate(); // Initialize useNavigate hook
     const [entry, setEntry] = useState({
         sleep_duration: "",
         bmi_category: "Normal",
