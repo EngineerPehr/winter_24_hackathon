@@ -26,7 +26,7 @@ export default function RoutesComponent() {
     return (
         <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/admin/home" element={<AdminHome />} />
+            <Route path="/admin/:userId/home" element={<AdminHome />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<CreateAccount />} />
             <Route path="/user/:userId/home" element={<UserHome />} />

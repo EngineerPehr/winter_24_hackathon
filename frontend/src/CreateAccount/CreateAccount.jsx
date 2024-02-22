@@ -60,7 +60,7 @@ export default function CreateAccount() {
 
             if (userType === 'admin') {
                 // If admin is selected, navigate to Create admin account page
-                navigate('/admin/home')
+                navigate(`/admin/${response.person_id}/home`)
             } else {
                 // Navigate to Create user account page
                 navigate(`/user/${response.person_id}/home`)

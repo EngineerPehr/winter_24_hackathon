@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import EmployeesList from './EmployeesList'
 import mood from './mood_img.png'
 import DropDownMenuButton from '../utils/DropDownMenuButton'
 
 export default function AdminHome() {
+    const { userId } = useParams()
     // Placeholder admin goals data:
     const goals = {
         sleepHoursThisMonth: 1545,
@@ -21,7 +22,7 @@ export default function AdminHome() {
         },
         {
             option: 'Profile',
-            route: `/user/1/home`,
+            route: `/user/${userId}/home`,
         },
         {
             option: 'Contact',
