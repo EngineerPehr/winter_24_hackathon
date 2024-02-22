@@ -15,7 +15,7 @@ export default function CreateAccount() {
     const [password, setPassword] = useState('')
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const [ein, setEin] = useState('')
-    const [formProgress, setFormProgress] = useState(1)
+    //const [formProgress, setFormProgress] = useState(1)
 
     function handleChange({ target: { name, value } }) {
         if (name === 'dropdown') {
@@ -24,6 +24,7 @@ export default function CreateAccount() {
                 ...previousUser,
                 admin: value === 'admin' ? true : false,
             }))
+            //setFormProgress(1)
         } else if (name === 'password') {
             setPassword(value)
         } else if (name === 'confirm-password') {
@@ -55,6 +56,7 @@ export default function CreateAccount() {
         [user]
     )
 
+    /*
     const handleContinue = () => {
         setFormProgress(2)
     }
@@ -62,6 +64,7 @@ export default function CreateAccount() {
     const handleBack = () => {
         setFormProgress(1)
     }
+    */
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -82,21 +85,10 @@ export default function CreateAccount() {
     }
 
     // Form field conditional renders
-    let fields = ""
+    let eidField = ""
     if (userType === "admin") {
-        fields = (
+        eidField = (
             <>
-            <label htmlFor="full-name"></label>
-                <input
-                    className="relative my-2 py-2 px-2 w-full rounded border-2"
-                    type="text"
-                    id="full-name"
-                    name="full-name"
-                    value={user.username}
-                    required={true}
-                    placeholder="Legal First and Last Name"
-                    onChange={handleChange}
-                />
                 <label htmlFor="ein"></label>
                 <input
                     className="relative my-2 py-2 px-2 w-full rounded border-2"
@@ -138,26 +130,19 @@ export default function CreateAccount() {
                                 <option value="admin">Admin</option>
                                 <option value="user">User</option>
                             </select>
-                            {
-                                fields
-                            }
                         {/* Username input */}
-                            {
-                                (userType === 'unselected' || userType === 'user') &&
-                                    <>
-                                    <label htmlFor="username"></label>
-                                    <input
-                                        className="relative my-2 py-2 px-2 w-full rounded border-2"
-                                        type="text"
-                                        id="username"
-                                        name="username"
-                                        required={true}
-                                        value={user.username}
-                                        placeholder="Enter Username"
-                                        onChange={handleChange}
-                                    />
-                                    </>
-                            }
+                            <label htmlFor="username"></label>
+                            <input
+                                className="relative my-2 py-2 px-2 w-full rounded border-2"
+                                type="text"
+                                id="username"
+                                name="username"
+                                required={true}
+                                value={user.username}
+                                placeholder={userType === 'user' || userType === 'unselected' ? "Enter Username" : "Legal First and Last Name"}
+                                onChange={handleChange}
+                            />
+                            {eidField}
                         {/* Password input */}
                             <label htmlFor="password"></label>
                             <input
@@ -185,37 +170,14 @@ export default function CreateAccount() {
                             </>
                         }
                         {/* Register button */}
-                            {formProgress === 1 ?  
-                                <>
-                                <div className="flex flex-col items-center justify-center">
-                                    <button
-                                        type="button"
-                                        className="button-dark-rounded mt-4 w-full mx-20"
-                                        onClick={handleContinue}
-                                    >
-                                        CONTINUE
-                                    </button>
-                                </div>
-                                </>
-
-                                :
-
-                                <>
-                                <button
-                                    type="button"
-                                    className="button-dark-rounded mt-4 w-1/2"
-                                    onClick={handleBack}
-                                >
-                                    BACK
-                                </button>
+                            <div className="flex flex-col items-center justify-center w-3/4">
                                 <button
                                     type="submit"
                                     className="button-dark-rounded mt-2 w-1/2"
                                 >
                                     REGISTER
                                 </button>
-                                </>
-                            }
+                            </div>
                         <p>
                             <a href="/login" className="underline">
                                 Sign In
