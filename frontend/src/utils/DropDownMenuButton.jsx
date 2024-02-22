@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaListUl } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { initDropdowns } from 'flowbite'
 
 // A nifty little dropdown menu that I got from Flowbite
 export default function DropDownMenuButton({ options }) {
+    useEffect(() => {
+        initDropdowns()
+    }, [])
     return (
         <>
         <button
