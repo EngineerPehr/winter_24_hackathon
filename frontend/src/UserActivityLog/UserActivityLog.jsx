@@ -11,6 +11,10 @@ export default function UserActivityLog() {
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
+            option: 'Home',
+            route: '/',
+        },
+        {
             option: 'Dashboard',
             route: `/user/${userId}/home`,
         },
@@ -19,16 +23,12 @@ export default function UserActivityLog() {
             route: `/user/${userId}/history`,
         },
         {
-            option: 'Log Activity',
-            route: `/user/${userId}/log`,
-        },
-        {
             option: 'Terms',
-            route: `bp/terms`,
+            route: '/bp/terms',
         },
         {
             option: 'Privacy Policy',
-            route: `bp/privacy`,
+            route: '/bp/privacy',
         },
     ]
     const suggestions = [

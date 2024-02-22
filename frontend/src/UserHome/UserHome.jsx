@@ -10,8 +10,8 @@ export default function UserHome() {
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
-            option: 'Dashboard',
-            route: `/user/${userId}/home`,
+            option: 'Home',
+            route: '/',
         },
         {
             option: 'Report History',
@@ -23,11 +23,11 @@ export default function UserHome() {
         },
         {
             option: 'Terms',
-            route: `bp/terms`,
+            route: '/bp/terms',
         },
         {
             option: 'Privacy Policy',
-            route: `bp/privacy`,
+            route: '/bp/privacy',
         },
     ]
     const [user, setUser] = useState(null)

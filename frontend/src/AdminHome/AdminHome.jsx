@@ -16,12 +16,12 @@ export default function AdminHome() {
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
-            option: 'Profile',
-            route: `/user/1/home`,
+            option: 'Home',
+            route: '/',
         },
         {
-            option: 'Careers',
-            route: '/bp/careers',
+            option: 'Profile',
+            route: `/user/1/home`,
         },
         {
             option: 'Contact',
