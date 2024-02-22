@@ -4,6 +4,7 @@ import DropDownMenuButton from '../utils/DropDownMenuButton'
 import { readUserById } from '../utils/api'
 import Spinner from '../utils/Spinner'
 import CircularProgressBar from '../utils/ProgressCircle'
+import { initDropdowns } from 'flowbite'
 
 export default function UserHome() {
     const { userId } = useParams()
@@ -48,6 +49,7 @@ export default function UserHome() {
 
     useEffect(() => {
         loadUser()
+        initDropdowns()
     }, [loadUser, userId])
 
     if (user) {
