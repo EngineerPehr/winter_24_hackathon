@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaListUl } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { initDropdowns } from 'flowbite'
 
 // A nifty little dropdown menu that I got from Flowbite
 export default function DropDownMenuButton({ options }) {
+    useEffect(() => {
+        initDropdowns()
+    }, [])
     return (
         <>
         <button
@@ -18,7 +22,7 @@ export default function DropDownMenuButton({ options }) {
         >
             <FaListUl />
         </button>
-        <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+        <div id="dropdown" className="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                 <li>
                     <Link to={options[0].route} className="block px-4 py-2 hover:bg-gray-100" reloadDocument>{options[0].option}</Link>

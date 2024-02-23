@@ -29,7 +29,7 @@ export default function LoginPage() {
             const userId = responseFromApi.person_id
             const admin = responseFromApi.admin
             if (admin) {
-                navigate("/admin/home")
+                navigate(`/admin/${userId}/home`)
             } else {
                 navigate(`/user/${userId}/home`)
             }
@@ -37,14 +37,6 @@ export default function LoginPage() {
             console.error(e)
         }
     }
-
-    // if (userId === "admin") {
-    //     // If user registered as admin, navigate to admin page
-    //     navigate("/admin/home");
-    // } else {
-    //     // Navigate to user account page
-    //     navigate("/user/home");
-    // }
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -58,26 +50,26 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col items-center justify-center">
                         {/* Username input */}
-                            <label htmlFor="username"></label>
-                            <input
+                        <label htmlFor="username"></label>
+                        <input
                             className="relative mt-8 mb-6 py-2 px-2 w-full rounded border-2"
-                                type="string"
-                                id="username"
-                                value={username}
-                                placeholder="Enter Username"
-                                onChange={handleUsernameChange}
-                            />
+                            type="string"
+                            id="username"
+                            value={username}
+                            placeholder="Enter Username"
+                            onChange={handleUsernameChange}
+                        />
                         {/* Password input */}
-                            <label htmlFor="password"></label>
-                            <input
-                                className="relative mb-6 py-2 px-2 w-full rounded border-2"
-                                type="password"
-                                id="password"
-                                autocomplete="new-password"
-                                value={password}
-                                placeholder="........"
-                                onChange={handlePasswordChange}
-                            />
+                        <label htmlFor="password"></label>
+                        <input
+                            className="relative mb-6 py-2 px-2 w-full rounded border-2"
+                            type="password"
+                            id="password"
+                            autocomplete="new-password"
+                            value={password}
+                            placeholder="........"
+                            onChange={handlePasswordChange}
+                        />
                         <div className="flex flex-col items-center justify-center mt-6 mb-20">
                             <p>Forget your password?</p>
                             <a
@@ -97,8 +89,10 @@ export default function LoginPage() {
                             </button>
                         </div>
                         <p>
-                            Or,{" "}
+                            Or,{' '}
                             <a href="/register" className="underline">
+                                {' '}
+                                {/* fixed route from ./register */}
                                 Register
                             </a>
                         </p>

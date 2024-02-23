@@ -20,14 +20,14 @@ export default function EntryCard({ entry, loadEntries }) {
         const abortController = new AbortController()
     
         try {
-            await deleteEntry(entry.entryId, abortController.signal)
+            await deleteEntry(entry.entry_id, abortController.signal)
         } catch (er) {
             console.error(er)
         } finally {
             setOpenModal(false)
             loadEntries()
+            abortController.abort()
         }
-        return () => abortController.abort()
     }
 
     // Hides this card
@@ -67,7 +67,7 @@ export default function EntryCard({ entry, loadEntries }) {
                     <h4>Heart Rate: {entry.heart_rate}</h4>
                 </div>
                 <div className="flex flex-col justify-around text-xl">
-                    <RemoveCardButton openModal={openModal} setOpenModal={setOpenModal} handleDelete={handleDelete} option={"entry"}/>
+                    <RemoveCardButton openModal={openModal} setOpenModal={setOpenModal} handleDelete={handleDelete} entry={entry} loadEntries={loadEntries} option={"entry"}/>
                     <button onClick={toggleVisibility} ><FaEyeSlash /></button>
                 </div>
             </div>

@@ -22,9 +22,12 @@ export default function EntriesList({ listOrder }) {
         }
     }, [])
     
-    useEffect(() => loadEntries, [loadEntries])
+    useEffect(() => {loadEntries()}, [loadEntries])
 
-    useEffect(() => setEntries(entries.toReversed()), [listOrder])
+    useEffect(() => {
+        setEntries(prevEntries => [...prevEntries].reverse());
+    }, [listOrder]);
+    
 
     if (entries) {
         return (

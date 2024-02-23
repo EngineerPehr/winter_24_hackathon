@@ -5,7 +5,7 @@ import { createUser } from '../utils/api'
 
 
 export default function CreateAccount() {
-    const [userType, setUserType] = useState("")
+    const [userType, setUserType] = useState('unselected')
     const navigate = useNavigate() // Initialize useHistory hook
 
     const [user, setUser] = useState({
@@ -13,20 +13,24 @@ export default function CreateAccount() {
         admin: true,
     })
     const [password, setPassword] = useState('')
-
-    const handleUserTypeChange = (e) => {
-        setUserType(e.target.value)
-    }
+    const [passwordConfirm, setPasswordConfirm] = useState('')
+    const [ein, setEin] = useState('')
+    //const [formProgress, setFormProgress] = useState(1)
 
     function handleChange({ target: { name, value } }) {
         if (name === 'dropdown') {
             setUserType(value)
             setUser((previousUser) => ({
                 ...previousUser,
-                admin: value,
+                admin: value === 'admin' ? true : false,
             }))
+            //setFormProgress(1)
         } else if (name === 'password') {
             setPassword(value)
+        } else if (name === 'confirm-password') {
+            setPasswordConfirm(value)
+        } else if (name === 'ein') {
+            setEin(value)
         } else {
             setUser((previousUser) => ({
                 ...previousUser,
@@ -52,6 +56,16 @@ export default function CreateAccount() {
         [user]
     )
 
+    /*
+    const handleContinue = () => {
+        setFormProgress(2)
+    }
+
+    const handleBack = () => {
+        setFormProgress(1)
+    }
+    */
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -60,7 +74,7 @@ export default function CreateAccount() {
 
             if (userType === 'admin') {
                 // If admin is selected, navigate to Create admin account page
-                navigate('/admin/home')
+                navigate(`/admin/${response.person_id}/home`)
             } else {
                 // Navigate to Create user account page
                 navigate(`/user/${response.person_id}/home`)
@@ -69,6 +83,27 @@ export default function CreateAccount() {
             console.error(error)
         }
     }
+
+    // Form field conditional renders
+    let eidField = ""
+    if (userType === "admin") {
+        eidField = (
+            <>
+                <label htmlFor="ein"></label>
+                <input
+                    className="relative my-2 py-2 px-2 w-full rounded border-2"
+                    type="text"
+                    id="ein"
+                    name="ein"
+                    value={ein}
+                    placeholder="Employer Identification Number"
+                    onChange={handleChange}
+                />
+            </>
+        )
+      }
+
+
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -87,9 +122,9 @@ export default function CreateAccount() {
                             className=" mt-8 mb-2 py-2 w-full rounded border-2"
                                 name="dropdown"
                                 id="userType"
-                                onChange={handleUserTypeChange}
+                                onChange={handleChange}
                             >
-                                <option value="/">
+                                <option value="unselected">
                                     Select Type of Account
                                 </option>
                                 <option value="admin">Admin</option>
@@ -98,49 +133,52 @@ export default function CreateAccount() {
                         {/* Username input */}
                             <label htmlFor="username"></label>
                             <input
-                            className="relative my-6 py-2 px-2 w-full rounded border-2"
+                                className="relative my-2 py-2 px-2 w-full rounded border-2"
                                 type="text"
                                 id="username"
                                 name="username"
+                                required={true}
                                 value={user.username}
-                                placeholder="Enter Username"
+                                placeholder={userType === 'user' || userType === 'unselected' ? "Enter Username" : "Legal First and Last Name"}
                                 onChange={handleChange}
                             />
+                            {eidField}
                         {/* Password input */}
                             <label htmlFor="password"></label>
                             <input
-                            className="relative mb-6 py-2 px-2 w-full rounded border-2"
+                            className="relative my-2 py-2 px-2 w-full rounded border-2"
                                 type="password"
                                 id="password"
                                 name="password"
                                 value={password}
-                                placeholder="Password"
+                                placeholder={userType === 'admin' ? "Location Password" : "Password"}
                                 onChange={handleChange}
                             />
-                        {/* <div
-                            class="relative mb-6 py-2 px-2 w-full rounded border-2"
-                            data-te-input-wrapper-init
-                        >
-                            <label htmlFor="password"></label>
+                        {
+                            (userType === 'user') &&
+                            <>
+                            <label htmlFor="confirm-password"></label>
                             <input
+                                className="relative my-2 py-2 px-2 w-full rounded border-2"
                                 type="password"
-                                id="password"
-                                value={password}
-                                placeholder="Confirm Password"
-                                onChange={handlePasswordChange}
+                                id="confirm-password"
+                                name="confirm-password"
+                                value={passwordConfirm}
+                                placeholder={"Confirm Password"}
+                                onChange={handleChange}
                             />
-                        </div> */}
+                            </>
+                        }
                         {/* Register button */}
-                        <div className="flex flex-col items-center justify-center">
-                            <button
-                                type="submit"
-                                className="button-dark-rounded w-full mx-20"
-                            >
-                                REGISTER
-                            </button>
-                        </div>
+                            <div className="flex flex-col items-center justify-center w-3/4">
+                                <button
+                                    type="submit"
+                                    className="button-dark-rounded mt-2 w-1/2"
+                                >
+                                    REGISTER
+                                </button>
+                            </div>
                         <p>
-                            Or,{' '}
                             <a href="/login" className="underline">
                                 Sign In
                             </a>

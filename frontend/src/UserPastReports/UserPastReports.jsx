@@ -9,24 +9,24 @@ export default function UserPastReports() {
     // Options to pass down to <DropDownMenuButton/>
     const menuOptions = [
         {
-            option: "Dashboard",
-            route: `/user/${userId}/home`,
+            option: 'Home',
+            route: '/',
         },
         {
-            option: "Report History",
-            route: `/user/${userId}/history`,
+            option: "Dashboard",
+            route: `/user/${userId}/home`,
         },
         {
             option: "Log Activity",
             route: `/user/${userId}/log`,
         },
         {
-            option: "Settings",
-            route: ``,
+            option: "Terms",
+            route: '/bp/terms',
         },
         {
             option: "Privacy Policy",
-            route: ``,
+            route: '/bp/privacy',
         },
     ]
     const [listOrder, setListOrder] = useState("newest")

@@ -24,24 +24,37 @@ function validateEnum(value, validValues) {
     return validValues.includes(value)
 }
 
-function validateDate(value) {
-    const currentDate = new Date()
-    const inputDate = new Date(value)
+// const { isValid, parseISO } = require('date-fns')
 
-    return inputDate <= currentDate
-}
+// function validateDate (value) {
+//     try {
+//         const currentDate = new Date()
+//         console.log('current date:', currentDate)
+
+//         const inputDate = parseISO(value)
+//         console.log('input date:', inputDate)
+
+//         if (!isValid(inputDate)) {
+//             console.error('Invalid inputDate:', value)
+//             return false
+//         }
+
+//         // Check if the inputDate is not in the future
+//         if (inputDate > currentDate) {
+//             console.error('Input date is in the future:', value)
+//             return false
+//         }
+
+//         return true
+//     } catch (error) {
+//         console.error('Error parsing date:', error)
+//         return false
+//     }
+// }
 
 function validateInput(req, res, next) {
     const validationRules = {
-        /*
-        username: { type: 'string', maxLength: 50 },
-        admin: { type: 'boolean' },
-        gender: { type: 'string', enum: ['Male', 'Female'] },
-        age: { type: 'number', min: 0, max: 200 },
-        */
         sleep_duration: { type: 'number', min: 0, max: 24 },
-        //quality_of_sleep: { type: 'number', min: 1, max: 10 },
-        //physical_activity_level: { type: 'number', min: 0, max: 1440 },
         stress_level: { type: 'number', min: 1, max: 10 },
         /*
         bmi_category: {
@@ -49,16 +62,9 @@ function validateInput(req, res, next) {
             enum: ["Underweight", "Normal", "Overweight"],
         },
         */
-        //blood_pressure: { type: 'string' },
         heart_rate: { type: 'number', min: 20, max: 600 },
         daily_steps: { type: 'number', min: 0, max: 100000 },
-        /*
-        sleep_disorder: {
-            type: "string",
-            enum: ["None", "Insomnia", "Sleep Apnea"],
-        },
-        */
-        date: { type: 'string', custom: validateDate },
+        // date: { type: 'string', custom: validateDate },
     }
 
     for (const field in validationRules) {
@@ -71,7 +77,6 @@ function validateInput(req, res, next) {
             max,
             custom,
         } = validationRules[field]
-        
 
         if (
             !validateField(value, type, { maxLength, min, max }) ||
@@ -174,7 +179,7 @@ async function update(req, res) {
 async function deleteEntry(req, res, next) {
     try {
         const { entryId } = req.params
-        await service.deleteUser(entryId)
+        await service.deleteEntry(entryId)
         res.sendStatus(204)
     } catch (error) {
         console.error(error)
