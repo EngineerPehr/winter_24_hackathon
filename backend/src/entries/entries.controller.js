@@ -179,7 +179,7 @@ async function update(req, res) {
 async function deleteEntry(req, res, next) {
     try {
         const { entryId } = req.params
-        await service.deleteUser(entryId)
+        await service.deleteEntry(entryId)
         res.sendStatus(204)
     } catch (error) {
         console.error(error)

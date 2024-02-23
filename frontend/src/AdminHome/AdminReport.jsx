@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import EmployeesList from './EmployeesList'
 import DropDownMenuButton from '../utils/DropDownMenuButton'
 
 export default function AdminReport() {
+    const { userId } = useParams()
     // Placeholder admin goals data:
     const goals = {
         sleepHoursThisMonth: 1545,
@@ -16,7 +17,7 @@ export default function AdminReport() {
     const menuOptions = [
         {
             option: 'Profile',
-            route: `/user/1/home`,
+            route: `/user/${userId}/home`,
         },
         {
             option: 'Careers',
@@ -67,7 +68,7 @@ export default function AdminReport() {
                                 by checking the report.
                             </p>
                             <Link
-                                to="/admin/home"
+                                to={`/admin/${userId}/home`}
                                 className="button-dark-rounded px-10 py-3 font-normal"
                             >
                                 DASHBOARD

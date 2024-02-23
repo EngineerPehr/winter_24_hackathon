@@ -32,7 +32,7 @@ export default function RoutesComponent() {
             <Route path="/user/:userId/home" element={<UserHome />} />
             <Route path="/user/account" element={<CreateUserAccount />} />
             <Route path="/admin/account" element={<CreateAdminAccount />} />
-            <Route path="/admin/report" element={<AdminReport />} />
+            <Route path="/admin/:userId/report" element={<AdminReport />} />
             <Route path="/user/:userId/log" element={<UserActivityLog />} />
             <Route path="/user/registerForm" element={<UserRegisterForm />} />
             <Route path="/tips/options" element={<TipsPage />} />
