@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 // import UserHome from "./UserHome";
-import { readUserByUsername } from '../utils/api'
-import '../index.css'
+import { readUserByUsername } from "../utils/api"
+import "../index.css"
 
 export default function LoginPage() {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
     const navigate = useNavigate()
 
     const handleUsernameChange = (e) => {

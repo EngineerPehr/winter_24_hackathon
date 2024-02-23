@@ -73,7 +73,7 @@ export default function UserActivityLog() {
         }))
     }
 
-    // Creates a new entry with today's date
+    // Creates a new entry with today"s date
     const handleSubmit = async (e) => {
         e.preventDefault()
 

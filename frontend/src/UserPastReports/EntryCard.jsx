@@ -5,14 +5,14 @@ import RemoveCardButton from "../utils/RemoveCardButton"
 import meterImageGood from "./good.jpg"
 import meterImageBad from "./bad.jpg"
 import meterImageOk from "./ok.jpg"
-import moment from 'moment';
+import moment from "moment";
 
 
 export default function EntryCard({ entry, loadEntries }) {
     const [hidden, setHidden] = useState(false)
     const [openModal, setOpenModal] = useState(false)
     const { date } = entry
-    const formattedDate = moment(date).format('dddd, MMMM Do YYYY')
+    const formattedDate = moment(date).format("dddd, MMMM Do YYYY")
 
 
     // RemoveEntryButton functionality, deletes entry
